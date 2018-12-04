@@ -29,9 +29,9 @@ body {
 }
 
 .gloss {
-    height: 600px;
     width: 100%;
-    background-color: rgba(255, 255, 255, .7);
+    background-color: rgba(1, 1, 1, .5);
+    color: white;
 }
 
 .gloss h3 {
@@ -39,12 +39,44 @@ body {
     padding-top: 200px;
 }
 
-.gloss p {
-    font-size: 4em;
+.gloss h4 {
+    font-size: 2em;
+    color:aqua;
 }
 
 .portfolio-item {
   margin-bottom: 30px;
+}
+
+
+.card1 {
+    background-image: url("../images/vilesMan.jpg");
+    /* Full height */
+    height: 100%;
+    /* Center and scale the image nicely */
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.card2 {
+    background-image: url("../images/screenAssistant.jpg");
+    /* Full height */
+    height: 100%;
+    /* Center and scale the image nicely */
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.card3 {
+    background-image: url("../images/seattleClouds.jpg");
+    /* Full height */
+    height: 100%;
+    /* Center and scale the image nicely */
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
 }
 
 /*Log In Page*/

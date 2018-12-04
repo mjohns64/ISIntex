@@ -15,6 +15,12 @@ namespace ISIntex.Controllers
             return View();
         }
 
+        // GET: Catalog
+        public ActionResult Catalog()
+        {
+            return View();
+        }
+
         // GET: About
         public ActionResult About()
         {
