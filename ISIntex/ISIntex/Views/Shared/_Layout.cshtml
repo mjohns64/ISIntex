@@ -40,14 +40,21 @@
                     <li class="nav-item">
                         @if (ISIntex.Models.Authorized.loginStatus == true)
                         {
-                            <a class="nav-link" href="/Home/Login">Log Out</a>
+                            <li class="nav-item">
+                                <a class="nav-link" href="/Home/Login" >My Account</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="/Home/LogOut">Log Out</a>
+                            </li>
                         }
                         else
                         {
-                            <a class="nav-link" href="/Home/Login">Log In</a>
+                            <li class="nav-item">
+                                <a class="nav-link" href="/Home/Login">Log In</a>
+                            </li>
                         }
-                    </li>
-                </ul>
+
+                    </ul>
             </div>
         </div>
     </nav>
