@@ -154,6 +154,7 @@
     <Compile Include="Models\Customer.cs" />
     <Compile Include="Models\Employee.cs" />
     <Compile Include="Models\Invoice.cs" />
+    <Compile Include="Models\RejectedWorkOrder.cs" />
     <Compile Include="Models\TestMaterials.cs" />
     <Compile Include="Models\TestResults.cs" />
     <Compile Include="Models\UserCredentials.cs" />
