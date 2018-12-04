@@ -13,5 +13,23 @@ namespace ISIntex.Controllers
         {
             return View();
         }
+
+        // GET: About
+        public ActionResult About()
+        {
+            return View();
+        }
+
+        // GET: Contact Us
+        public ActionResult ContactUs()
+        {
+            return View();
+        }
+
+        // GET: Log In
+        public ActionResult Login()
+        {
+            return View();
+        }
     }
 }
