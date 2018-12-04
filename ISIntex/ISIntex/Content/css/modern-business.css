@@ -79,9 +79,36 @@ body {
     background-size: cover;
 }
 
+.cardCatalog {
+    background-image: url("../images/hero-image.jpg");
+    /* Full height */
+    height: 100%;
+    /* Center and scale the image nicely */
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
 /*Log In Page*/
 .logIn{
-    height: 500px;
-    padding: 20px 20px 20px 50px;
+    margin-top: 200px;
+    height: 300px;
+    background-color: rgba(255, 255, 255, .8);
+    padding: 25px 50px 25px 50px;
+}
+
+.bgimage {
+    width: 100%;
+    height: 100vh;
+    background: url('../images/seattleClouds.jpg');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    background-attachment: fixed;
+}
+
+.bgimage h5 {
+    color: white;
+    text-shadow: 2px 2px #333;
 }
 
