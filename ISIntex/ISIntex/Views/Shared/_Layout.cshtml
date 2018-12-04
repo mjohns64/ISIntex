@@ -33,7 +33,14 @@
                         <a class="nav-link" href="/Home/ContactUs">Contact Us</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="/Home/LogIn">Log In</a>
+                        @if (ISIntex.Models.Authorized.loginStatus == true)
+                        {
+                            <a class="nav-link" href="/Home/Login">Log Out</a>
+                        }
+                        else
+                        {
+                            <a class="nav-link" href="/Home/Login">Log In</a>
+                        }
                     </li>
                 </ul>
             </div>

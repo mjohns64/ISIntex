@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ISIntex.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -8,10 +9,17 @@ namespace ISIntex.Controllers
 {
     public class TechnicianController : Controller
     {
-        // GET: Technician
+        // GET: Customer
         public ActionResult Index()
         {
-            return View();
+            if (Authorized.userAuth == "technician")
+            {
+                return View();
+            }
+            else
+            {
+                return RedirectToAction("NotAuthorized", "Home");
+            }
         }
     }
 }

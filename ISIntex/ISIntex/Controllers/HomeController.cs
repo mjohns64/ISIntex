@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using ISIntex.Models;
 
 namespace ISIntex.Controllers
 {
@@ -34,7 +35,22 @@ namespace ISIntex.Controllers
         // GET: Log In
         public ActionResult Login()
         {
-            ViewBag.error = null;
+            if (Authorized.loginStatus == true)
+            {
+                Authorized.loginStatus = false;
+                Authorized.userAuth = null;
+                return View("LogOut");
+            }
+            else
+            {
+                ViewBag.error = null;
+                return View();
+            }
+        }
+
+        // GET: Log In
+        public ActionResult NotAuthorized()
+        {
             return View();
         }
 
@@ -44,19 +60,27 @@ namespace ISIntex.Controllers
         {
             if (username == "customer")
             {
+                Authorized.userAuth = "customer";
+                Authorized.loginStatus = true;
                 return RedirectToAction("Index" , "Customer");
             }
             else if (username == "sales")
             {
+                Authorized.userAuth = "sales";
+                Authorized.loginStatus = true;
                 return RedirectToAction("Index" , "Sales");
             }
             else if (username == "manager")
             {
+                Authorized.userAuth = "manager";
+                Authorized.loginStatus = true;
                 return RedirectToAction("Index" , "Manager");
             }
             else if (username == "technician")
             {
-               return RedirectToAction("Index" , "Technician");
+                Authorized.userAuth = "technician";
+                Authorized.loginStatus = true;
+                return RedirectToAction("Index" , "Technician");
             }
             else
             {
