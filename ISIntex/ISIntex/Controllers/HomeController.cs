@@ -15,6 +15,12 @@ namespace ISIntex.Controllers
             return View();
         }
 
+        // GET: Catalog
+        public ActionResult Catalog()
+        {
+            return View();
+        }
+
         // GET: About
         public ActionResult About()
         {
@@ -37,9 +43,26 @@ namespace ISIntex.Controllers
         {
             if (Authorized.loginStatus == true)
             {
-                Authorized.loginStatus = false;
-                Authorized.userAuth = null;
-                return View("LogOut");
+                if (Authorized.userAuth == "customer")
+                {
+                    return RedirectToAction("Index", "Customer");
+                }
+                else if (Authorized.userAuth == "sales")
+                {
+                    return RedirectToAction("Index", "Sales");
+                }
+                else if (Authorized.userAuth == "manager")
+                {
+                    return RedirectToAction("Index", "Manager");
+                }
+                else if (Authorized.userAuth == "technician")
+                {
+                    return RedirectToAction("Index", "Technician");
+                }
+                else
+                {
+                    return View();
+                }
             }
             else
             {
@@ -51,6 +74,14 @@ namespace ISIntex.Controllers
         // GET: Log In
         public ActionResult NotAuthorized()
         {
+            return View();
+        }
+
+        // GET: Log In
+        public ActionResult LogOut()
+        {
+            Authorized.userAuth = null;
+            Authorized.loginStatus = false;
             return View();
         }
 
