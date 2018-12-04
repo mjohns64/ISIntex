@@ -1,0 +1,55 @@
+/*!
+ * Start Bootstrap - Modern Business (https://startbootstrap.com/template-overviews/modern-business)
+ * Copyright 2013-2017 Start Bootstrap
+ * Licensed under MIT (https://github.com/BlackrockDigital/startbootstrap-logomodern-business-nav/blob/master/LICENSE)
+ */
+
+body {
+  padding-top: 54px;
+}
+
+@media (min-width: 992px) {
+  body {
+    padding-top: 56px;
+    min-height: 500px;
+  }
+}
+
+/* Main Page */
+.gifHero {
+    /* The image used */
+    background-image: url('/Content/images/DNAgif.gif');
+    /* Full height */
+    height: 600px;
+    /* Center and scale the image nicely */
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    z-index: 1000;
+}
+
+.gloss {
+    height: 600px;
+    width: 100%;
+    background-color: rgba(255, 255, 255, .7);
+}
+
+.gloss h3 {
+    font-size: 6em;
+    padding-top: 200px;
+}
+
+.gloss p {
+    font-size: 4em;
+}
+
+.portfolio-item {
+  margin-bottom: 30px;
+}
+
+/*Log In Page*/
+.logIn{
+    height: 500px;
+    padding: 20px 20px 20px 50px;
+}
+
