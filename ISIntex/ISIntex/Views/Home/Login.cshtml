@@ -3,5 +3,22 @@
     ViewBag.Title = "Login";
 }
 
-<h2>Login</h2>
+<div class="logIn">
+    <h1>Log In</h1>
+    @using (Html.BeginForm("LoginRouter", "Home"))
+    {
+        <p style="color: red">@ViewBag.error</p>
+        <div>
+            <input type="text" placeholder="Username" name="username" />
+        </div>
+        <br />
+        <div>
+            <input type="text" placeholder="Password" name="password" />
+        </div>
+        <br />
+        <input type="submit" value="Log In" />
+    }
+</div>
+
+@Html.ActionLink("Dont have an accoun? Make one here!", "SignUp")
 

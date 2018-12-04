@@ -26,10 +26,43 @@ namespace ISIntex.Controllers
             return View();
         }
 
+        public ActionResult SignUp()
+        {
+            return View();
+        }
+
         // GET: Log In
         public ActionResult Login()
         {
+            ViewBag.error = null;
             return View();
+        }
+
+        //POST: Login
+        [HttpPost]
+        public ActionResult LoginRouter(string username, string password)
+        {
+            if (username == "customer")
+            {
+                return RedirectToAction("Index" , "Customer");
+            }
+            else if (username == "sales")
+            {
+                return RedirectToAction("Index" , "Sales");
+            }
+            else if (username == "manager")
+            {
+                return RedirectToAction("Index" , "Manager");
+            }
+            else if (username == "technician")
+            {
+               return RedirectToAction("Index" , "Technician");
+            }
+            else
+            {
+                ViewBag.error = "Incorrect Username or Password";
+                return View("Login");
+            }
         }
     }
 }
