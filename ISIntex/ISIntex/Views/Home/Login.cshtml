@@ -3,22 +3,36 @@
     ViewBag.Title = "Login";
 }
 
-<div class="logIn">
-    <h1>Log In</h1>
-    @using (Html.BeginForm("LoginRouter", "Home"))
-    {
-        <p style="color: red">@ViewBag.error</p>
-        <div>
-            <input type="text" placeholder="Username" name="username" />
+<section class="bgimage">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-4"></div>
+            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4" align="center">
+                <div class="logIn">
+                    <h1>Log In</h1>
+                    @using (Html.BeginForm("LoginRouter", "Home"))
+                    {
+                        <p style="color: red">@ViewBag.error</p>
+                        <div>
+                            <input type="text" placeholder="Username" name="username" />
+                        </div>
+                        <br />
+                        <div>
+                            <input type="text" placeholder="Password" name="password" />
+                        </div>
+                        <br />
+                        <input class="btn-info" type="submit" value="Log In" />
+                    }
+                    <br />
+                    @Html.ActionLink("Dont have an account? Make one here!", "SignUp")
+                </div>
+            </div>
+            <div class="col-4"></div>
         </div>
-        <br />
-        <div>
-            <input type="text" placeholder="Password" name="password" />
-        </div>
-        <br />
-        <input type="submit" value="Log In" />
-    }
-</div>
+    </div>
+</section>
 
-@Html.ActionLink("Dont have an accoun? Make one here!", "SignUp")
+
+
+
 
