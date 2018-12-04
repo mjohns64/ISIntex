@@ -9,8 +9,8 @@ namespace ISIntex.Models
     {
         public int TestID { get; set; }
         public int AssayID { get; set; }
-        public string TestName { get; set; }
+        public string Testname { get; set; }
         public bool Required { get; set; }
-        public decimal Cost { get; set; }
+        public decimal AssayCost { get; set; }
     }
 }

@@ -7,7 +7,7 @@ namespace ISIntex.Models
 {
     public class TestResults
     {
-        public int TestResultsID { get; set; }
+        public int TestResultID { get; set; }
         public string TestDocumentation { get; set; }
         public int LTNumber { get; set; }
         public int CompoundSequenceCode { get; set; }
