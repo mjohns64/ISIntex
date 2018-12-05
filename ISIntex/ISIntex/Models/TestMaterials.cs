@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Web;
@@ -9,6 +10,7 @@ namespace ISIntex.Models
     [Table("TableMaterials")]
     public class TestMaterials
     {
+        [Key]
         public int MaterialID { get; set; }
         public int AssayID { get; set; }
         public string MaterialName { get; set; }
