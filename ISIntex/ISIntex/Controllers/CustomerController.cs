@@ -13,6 +13,8 @@ namespace ISIntex.Controllers
 
         private static NorthwestContext db = new NorthwestContext();
         public static List<Customer> CustomerInfo = db.Customers.ToList();
+        public static List<RejectedEstimate> rejectedEstimates = db.RejectedEstimates.ToList();
+
 
         // GET: Customer
         public ActionResult Index()
@@ -70,6 +72,13 @@ namespace ISIntex.Controllers
 
             return View("Confirmation", rejectedEstimate); 
             
+
+        }
+
+        public ActionResult MyOrderView()
+        {
+
+            return View(rejectedEstimates); 
 
         }
 

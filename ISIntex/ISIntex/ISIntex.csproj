@@ -200,6 +200,7 @@
     <Content Include="Views\Technician\TestResults.cshtml" />
     <Content Include="Views\Customer\OrderForm.cshtml" />
     <Content Include="Views\Customer\Confirmation.cshtml" />
+    <Content Include="Views\Customer\MyOrderView.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
