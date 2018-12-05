@@ -16,14 +16,22 @@ namespace ISIntex.Controllers
         // GET: Customer
         public ActionResult Index()
         {
-            if (Authorized.userAuth == "technician")
-            {
-                return View();
-            }
-            else
-            {
-                return RedirectToAction("NotAuthorized", "Home");
-            }
+            //if (Authorized.userAuth == "technician")
+            //{
+            var stuffyStuff = db.Compounds.ToList();
+            return View("WorkOrders", stuffyStuff);
+            //}
+            //else
+            //{
+                //return RedirectToAction("NotAuthorized", "Home");
+            //}
+        }
+
+        public ActionResult TestResults(int LTNum, int CSC)
+        {
+            Compound compound = db.Compounds.Find(LTNum, CSC);
+            //compound.TestResults = db.TestResults.Find(LTNum);
+            return View();
         }
     }
 }
