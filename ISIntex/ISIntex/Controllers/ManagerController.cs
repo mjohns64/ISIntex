@@ -1,4 +1,5 @@
-﻿using ISIntex.Models;
+﻿using ISIntex.DAL;
+using ISIntex.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,12 +10,16 @@ namespace ISIntex.Controllers
 {
     public class ManagerController : Controller
     {
+
+        private NorthwestContext db = new NorthwestContext();
+
         // GET: Customer
         public ActionResult Index()
         {
             if (Authorized.userAuth == "manager")
             {
-                return View();
+                var customers = db.Customers;
+                return View(customers.ToList());
             }
             else
             {

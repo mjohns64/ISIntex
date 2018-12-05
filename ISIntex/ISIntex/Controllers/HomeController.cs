@@ -3,12 +3,16 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using ISIntex.DAL;
 using ISIntex.Models;
 
 namespace ISIntex.Controllers
 {
     public class HomeController : Controller
     {
+
+        private NorthwestContext db = new NorthwestContext();
+
         // GET: Home
         public ActionResult Index()
         {
@@ -35,7 +39,27 @@ namespace ISIntex.Controllers
 
         public ActionResult SignUp()
         {
+            ViewBag.passwordError = null;
             return View();
+        }
+
+        //Post: SignUp
+        [HttpPost]
+        public ActionResult SignUp(Customer customer , string password)
+        {
+            if (ModelState.IsValid && password != "")
+            {
+                return View("Login");
+            }
+            else
+            {
+                if (password == "")
+                {
+                    ViewBag.passwordError = "This is required";
+                }
+                return View("SignUp");
+            }
+ 
         }
 
         // GET: Log In
