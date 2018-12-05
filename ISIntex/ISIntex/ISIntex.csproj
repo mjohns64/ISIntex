@@ -99,6 +99,7 @@
     <Content Include="Content\images\hero-image.jpg" />
     <Content Include="Content\images\lab.jpg" />
     <Content Include="Content\images\notAuthorized.png" />
+    <Content Include="Content\images\periodic-table.png" />
     <Content Include="Content\images\pillWoman.jpg" />
     <Content Include="Content\images\screenAssistant.jpg" />
     <Content Include="Content\images\seattle1.jpg" />
@@ -167,6 +168,7 @@
     <Compile Include="Models\Customer.cs" />
     <Compile Include="Models\Employee.cs" />
     <Compile Include="Models\Invoice.cs" />
+    <Compile Include="Models\PeriodicViewModel.cs" />
     <Compile Include="Models\RejectedEstimate.cs" />
     <Compile Include="Models\TestMaterials.cs" />
     <Compile Include="Models\TestResults.cs" />
@@ -201,7 +203,9 @@
     <Content Include="Views\Sales\MyClients.cshtml" />
     <Content Include="Views\Manager\Index.cshtml" />
     <Content Include="Views\Manager\SalesByRep.cshtml" />
-
+    <Content Include="Views\Customer\OrderForm.cshtml" />
+    <Content Include="Views\Customer\Confirmation.cshtml" />
+    <Content Include="Views\Customer\MyOrderView.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
