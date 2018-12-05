@@ -1,10 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Web;
 
 namespace ISIntex.Models
 {
+
+    [Table("Compound")]
     public class Compound
     {
         public int LTNumber { get; set; }
