@@ -1,4 +1,5 @@
-﻿using ISIntex.Models;
+﻿using ISIntex.DAL;
+using ISIntex.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,6 +10,9 @@ namespace ISIntex.Controllers
 {
     public class SalesController : Controller
     {
+
+        private NorthwestContext db = new NorthwestContext();
+
         // GET: Customer
         public ActionResult Index()
         {

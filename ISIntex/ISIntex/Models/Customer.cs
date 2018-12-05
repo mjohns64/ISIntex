@@ -1,10 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Web;
 
 namespace ISIntex.Models
 {
+    [Table("Customer")]
     public class Customer
     {
         public int CustomerID { get; set; }
@@ -12,7 +14,7 @@ namespace ISIntex.Models
         public string LastName { get; set; }
         public string Company { get; set; }
         public string Email { get; set; }
-        public int Phone { get; set; }
+        public string Phone { get; set; }
         public string Address { get; set; }
         public string City { get; set; }
         public string State { get; set; }
