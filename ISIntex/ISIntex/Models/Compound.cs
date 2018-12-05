@@ -8,6 +8,7 @@ using System.Web;
 
 namespace ISIntex.Models
 {
+    [Table("Table")]
     public class Compound
     {
         [DisplayName("LT Number")]
