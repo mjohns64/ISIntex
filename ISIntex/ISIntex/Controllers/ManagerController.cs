@@ -18,7 +18,7 @@ namespace ISIntex.Controllers
 
         private static NorthwestContext db = new NorthwestContext();
 
-        public static IEnumerable<SalesByRep> SalesByRepList = db.Database.SqlQuery<SalesByRep>("SELECT Employee.EmployeeID, Employee.FirstName, Employee.LastName, SUM(WorkOrder.ActualPrice) AS TotalRevenue FROM WorkOrder INNER JOIN Customer ON WorkOrder.CustomerID = Customer.CustomerID INNER JOIN Employee ON Customer.SalesRepID = Employee.EmployeeID WHERE WorkOrder.Status = 'Complete' AND EmployeeID BETWEEN 1 and 8 GROUP BY Employee.EmployeeID, Employee.FirstName, Employee.LastName ORDER BY EmployeeID");
+        public static IEnumerable<SalesByRep> SalesByRepList = db.Database.SqlQuery<SalesByRep>("SELECT Employee.EmployeeID, Employee.FirstName, Employee.LastName, SUM(WorkOrder.ActualPrice) AS TotalRevenue FROM WorkOrder INNER JOIN Customer ON WorkOrder.CustomerID = Customer.CustomerID INNER JOIN Employee ON Customer.SalesRepID = Employee.EmployeeID WHERE WorkOrder.Status = 'Complete' AND UserTypeID = 2 GROUP BY Employee.EmployeeID, Employee.FirstName, Employee.LastName ORDER BY EmployeeID");
 
         // GET: Customer
         public ActionResult Index()
