@@ -8,6 +8,7 @@ using System.Web;
 
 namespace ISIntex.Models
 {
+    [Table("Compound")]
     public class Compound
     {
         [DisplayName("LT Number")]
@@ -15,31 +16,33 @@ namespace ISIntex.Models
         public int LTNumber { get; set; }
 
         [DisplayName("Compound Sequence Code")]
-        [Key, Column(Order =2)]
+        [Key, Column(Order = 2)]
         public int CompoundSequenceCode { get; set; }
 
         [DisplayName("Weight (in milligrams)")]
-        public decimal Weight { get; set; }
+        public decimal? Weight { get; set; }
 
         [DisplayName("Molecular Mass")]
-        public decimal MolecularMass { get; set; }
+        public decimal? MolecularMass { get; set; }
 
         [DisplayName("Compound Name")]
         public string CompoundName { get; set; }
 
-        public int Quantity { get; set; }
+        public int? Quantity { get; set; }
 
         [DisplayName("Received By")]
-        public string ReceivedBy { get; set; }
+        public int ReceivedBy { get; set; }
 
         [DisplayName("Date Received")]
-        public DateTime DateReceived { get; set; }
+        public DateTime? DateReceived { get; set; }
 
         [DisplayName("Date Due")]
-        public DateTime DateDue { get; set; }
+        public DateTime? DateDue { get; set; }
         public string Appearance { get; set; }
 
-        [DisplayName("Maximum Tolerated Dose")]
-        public int MTD { get; set; }
+        [DisplayName("Maximum Tolerated Dose (in milliliters")]
+        public int? MTD { get; set; }
+
+        public ICollection<TestResults> TestResults {get; set;}
     }
 }
