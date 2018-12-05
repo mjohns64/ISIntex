@@ -1,0 +1,64 @@
+﻿@model IEnumerable<ISIntex.Models.RejectedEstimate>
+
+@{
+    ViewBag.Title = "RejectedEstimate";
+}
+
+<div class="container body-content" style="padding-top: 50px;">
+    <h2>Rejected Estimates</h2>
+
+    <table class="table rejectedEstimateTable">
+        <tr>
+            <th class="thEndLeft">
+                @Html.DisplayNameFor(model => model.EstimateID)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CustomerID)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Comments)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.LTNumber)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.EstimatedPrice)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.AssayID)
+            </th>
+            <th class="thEndRight"></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.EstimateID)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CustomerID)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Comments)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.LTNumber)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.EstimatedPrice)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.AssayID)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+                    @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+                    @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+                </td>
+            </tr>
+        }
+
+    </table>
+</div>
+

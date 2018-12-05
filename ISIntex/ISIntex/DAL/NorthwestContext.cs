@@ -18,7 +18,7 @@ namespace ISIntex.DAL
         public DbSet<Customer> Customers { get; set; }
         public DbSet<Employee> Employees { get; set; }
         public DbSet<Invoice> Invoices { get; set; }
-
+        public DbSet<RejectedEstimate> RejectedEstimate { get; set; }
 
 
 
