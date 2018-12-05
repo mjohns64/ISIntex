@@ -32,7 +32,7 @@ namespace ISIntex.Controllers
         {
             if (Authorized.userAuth == "sales")
             {
-                return View(db.RejectedEstimate.ToList());
+                return View(db.RejectedEstimates.ToList());
             }
             else
             {
