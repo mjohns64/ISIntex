@@ -26,5 +26,38 @@ namespace ISIntex.Controllers
                 return RedirectToAction("NotAuthorized", "Home");
             }
         }
+
+        public ActionResult OrderForm()
+        {
+
+            return View(); 
+
+        }
+
+
+        [HttpPost]
+        public ActionResult OrderForm(RejectedEstimate rejectedEstimate)
+        {
+            db.Database.ExecuteSqlCommand("INSERT INTO RejectedEstimate (CustomerID, Comments, LTNumber, EstimatedPrice, AssayID, Element1, Element2, Element1Quantity, Element2Quantity) VALUES ('"
+               + 0 + "','"
+                + rejectedEstimate.Comments + "','"
+                + 0 + "','"
+                + 1000 + "','"
+                + 0 + "','"
+                 + rejectedEstimate.Element1 + "','"
+                  + rejectedEstimate.Element2 + "','"
+                   + rejectedEstimate.Element1Quantity + "','"
+                    + rejectedEstimate.Element2Quantity + "');"
+                    ); 
+
+
+
+            return View("Confirmation", rejectedEstimate); 
+            
+
+        }
+
+
+
     }
 }

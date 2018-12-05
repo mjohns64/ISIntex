@@ -17,5 +17,11 @@ namespace ISIntex.Models
         public int LTNumber { get; set; }
         public decimal EstimatedPrice { get; set; }
         public int AssayID { get; set; }
+        public int Element1 { get; set; }
+        public int Element2 { get; set; }
+        public int Element1Quantity { get; set; }
+        public int Element2Quantity { get; set; }
+
+
     }
 }
