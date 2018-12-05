@@ -98,6 +98,7 @@
     <Content Include="Content\images\DNAgif.gif" />
     <Content Include="Content\images\hero-image.jpg" />
     <Content Include="Content\images\lab.jpg" />
+    <Content Include="Content\images\notAuthorized.png" />
     <Content Include="Content\images\pillWoman.jpg" />
     <Content Include="Content\images\screenAssistant.jpg" />
     <Content Include="Content\images\seattle1.jpg" />
@@ -200,6 +201,7 @@
     <Content Include="Views\Sales\MyClients.cshtml" />
     <Content Include="Views\Manager\Index.cshtml" />
     <Content Include="Views\Manager\SalesByRep.cshtml" />
+
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

@@ -13,15 +13,24 @@ namespace ISIntex.Controllers
     public class SalesController : Controller
     {
         private static NorthwestContext db = new NorthwestContext();
-
+        public static List<Employee> EmployeeInfo = db.Employees.ToList();
         public static IEnumerable<SalesList> MySalesList = db.Database.SqlQuery<SalesList>("SELECT * FROM Customer WHERE SalesRepID = 3");
-        
 
         // GET: Customer
         public ActionResult Index()
         {
             if (Authorized.userAuth == "sales")
             {
+                foreach (var item in EmployeeInfo)
+                {
+                    if (item.EmployeeEmail == Authorized.Email)
+                    {
+                        Authorized.FirstName = item.FirstName;
+                        Authorized.LastName = item.LastName;
+                        Authorized.EmployeeID = item.EmployeeID;
+                    }
+                }
+
                 return View();
             }
             else

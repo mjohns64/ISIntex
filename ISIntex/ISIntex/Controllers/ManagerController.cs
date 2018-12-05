@@ -17,14 +17,26 @@ namespace ISIntex.Controllers
     {
 
         private static NorthwestContext db = new NorthwestContext();
-
+        public static List<Employee> EmployeeInfo = db.Employees.ToList();
         public static IEnumerable<SalesByRep> SalesByRepList = db.Database.SqlQuery<SalesByRep>("SELECT Employee.EmployeeID, Employee.FirstName, Employee.LastName, SUM(WorkOrder.ActualPrice) AS TotalRevenue FROM WorkOrder INNER JOIN Customer ON WorkOrder.CustomerID = Customer.CustomerID INNER JOIN Employee ON Customer.SalesRepID = Employee.EmployeeID WHERE WorkOrder.Status = 'Complete' AND UserTypeID = 2 GROUP BY Employee.EmployeeID, Employee.FirstName, Employee.LastName ORDER BY EmployeeID");
+
 
         // GET: Customer
         public ActionResult Index()
         {
             if (Authorized.userAuth == "manager")
             {
+
+                foreach (var item in EmployeeInfo)
+                {
+                    if (item.EmployeeEmail == Authorized.Email)
+                    {
+                        Authorized.FirstName = item.FirstName;
+                        Authorized.LastName = item.LastName;
+                        Authorized.EmployeeID = item.EmployeeID;
+                    }
+                }
+
                 return View();
             }
             else

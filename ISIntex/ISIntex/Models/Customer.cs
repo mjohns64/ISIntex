@@ -50,7 +50,7 @@ namespace ISIntex.Models
         [Required(ErrorMessage = "This is Required")]
         public string Zip { get; set; }
 
-        public int SalesRepID { get; set; }
+        public int? SalesRepID { get; set; }
         public string PaymentInfo { get; set; }
     }
 }
