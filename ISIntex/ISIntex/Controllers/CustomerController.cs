@@ -29,7 +29,6 @@ namespace ISIntex.Controllers
                         Authorized.FirstName = item.FirstName;
                         Authorized.LastName = item.LastName;
                         Authorized.Company = item.Company;
-                        Authorized.Email = item.Email;
                         Authorized.Phone = item.Phone;
                         Authorized.Address = item.Address;
                         Authorized.City = item.City;

@@ -98,6 +98,7 @@
     <Content Include="Content\images\DNAgif.gif" />
     <Content Include="Content\images\hero-image.jpg" />
     <Content Include="Content\images\lab.jpg" />
+    <Content Include="Content\images\notAuthorized.png" />
     <Content Include="Content\images\periodic-table.png" />
     <Content Include="Content\images\pillWoman.jpg" />
     <Content Include="Content\images\screenAssistant.jpg" />
@@ -176,6 +177,8 @@
     <Compile Include="Models\WorkOrder.cs" />
     <Compile Include="Models\WorkOrderTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ViewModels\SalesByRep.cs" />
+    <Compile Include="ViewModels\SalesList.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\web.config" />
@@ -188,16 +191,18 @@
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Scripts\jquery-1.10.2.min.map" />
     <Content Include="Views\Customer\Index.cshtml" />
-    <Content Include="Views\Manager\Index.cshtml" />
     <Content Include="Views\Sales\Index.cshtml" />
     <Content Include="Views\Technician\Index.cshtml" />
     <Content Include="Views\Home\NotAuthorized.cshtml" />
     <Content Include="Views\Home\LogOut.cshtml" />
     <Content Include="Views\Home\Catalog.cshtml" />
     <Content Include="Views\Home\SignUp.cshtml" />
-    <Content Include="Views\Sales\RejectedEstimate.cshtml" />
     <Content Include="Views\Technician\WorkOrders.cshtml" />
     <Content Include="Views\Technician\TestResults.cshtml" />
+    <Content Include="Views\Sales\RejectedEstimate.cshtml" />
+    <Content Include="Views\Sales\MyClients.cshtml" />
+    <Content Include="Views\Manager\Index.cshtml" />
+    <Content Include="Views\Manager\SalesByRep.cshtml" />
     <Content Include="Views\Customer\OrderForm.cshtml" />
     <Content Include="Views\Customer\Confirmation.cshtml" />
     <Content Include="Views\Customer\MyOrderView.cshtml" />
