@@ -10,8 +10,10 @@ namespace ISIntex.Controllers
 {
     public class SalesController : Controller
     {
-
         private NorthwestContext db = new NorthwestContext();
+       
+
+        
 
         // GET: Customer
         public ActionResult Index()
@@ -19,6 +21,18 @@ namespace ISIntex.Controllers
             if (Authorized.userAuth == "sales")
             {
                 return View();
+            }
+            else
+            {
+                return RedirectToAction("NotAuthorized", "Home");
+            }
+        }
+
+        public ActionResult RejectedEstimate()
+        {
+            if (Authorized.userAuth == "sales")
+            {
+                return View(db.RejectedEstimates.ToList());
             }
             else
             {

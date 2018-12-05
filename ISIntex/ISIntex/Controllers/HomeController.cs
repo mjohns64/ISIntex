@@ -49,6 +49,18 @@ namespace ISIntex.Controllers
         {
             if (ModelState.IsValid && password != "")
             {
+                db.Database.ExecuteSqlCommand("INSERT INTO customer (FirstName,LastName,Company,Email,Phone,Address,City,State,Zip) VALUES ('" 
+                    + customer.FirstName + "','"
+                    + customer.LastName + "','"
+                    + customer.Company + "','"
+                    + customer.Email + "','"
+                    + customer.Phone + "','"
+                    + customer.Address + "','"
+                    + customer.City + "','"
+                    + customer.State + "','"
+                    + customer.Zip + "');"
+                    );
+
                 return View("Login");
             }
             else

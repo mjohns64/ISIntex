@@ -18,9 +18,8 @@ namespace ISIntex.Controllers
         {
             if (Authorized.userAuth == "customer")
             {
-
+                 
                 return View(); 
-
             }
             else
             {

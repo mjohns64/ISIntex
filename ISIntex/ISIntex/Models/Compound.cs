@@ -8,6 +8,7 @@ using System.Web;
 
 namespace ISIntex.Models
 {
+
     [Table("Compound")]
     public class Compound
     {

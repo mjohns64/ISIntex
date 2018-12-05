@@ -12,7 +12,9 @@ namespace ISIntex.Models
     [Table("Customer")]
     public class Customer
     {
+        
         [Required(ErrorMessage = "This is Required")]
+        [Key]
         public int CustomerID { get; set; }
 
         [Required(ErrorMessage = "This is Required")]

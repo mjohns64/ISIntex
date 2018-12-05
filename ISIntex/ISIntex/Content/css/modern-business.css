@@ -111,3 +111,28 @@ body {
     text-shadow: 2px 2px #333;
 }
 
+/* Sales Section*/
+.rejectedEstimateTable th {
+    background-color: lightblue;
+    border-right: 1px solid white;
+    border-left: 1px solid white;
+    border-top: 1px solid black;
+    border-bottom: 1px solid black
+}
+
+.rejectedEstimateTable tr {
+    border-bottom: 1px solid black
+}
+
+.rejectedEstimateTable td {
+    border-right: 1px solid black;
+    border-left: 1px solid black;
+}
+
+.rejectedEstimateTable .thEndLeft {
+    border-left: 1px solid black
+}
+
+.rejectedEstimateTable .thEndRight {
+    border-right: 1px solid black
+}

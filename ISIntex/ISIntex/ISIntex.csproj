@@ -166,7 +166,7 @@
     <Compile Include="Models\Customer.cs" />
     <Compile Include="Models\Employee.cs" />
     <Compile Include="Models\Invoice.cs" />
-    <Compile Include="Models\RejectedWorkOrder.cs" />
+    <Compile Include="Models\RejectedEstimate.cs" />
     <Compile Include="Models\TestMaterials.cs" />
     <Compile Include="Models\TestResults.cs" />
     <Compile Include="Models\UserCredentials.cs" />
@@ -193,6 +193,7 @@
     <Content Include="Views\Home\LogOut.cshtml" />
     <Content Include="Views\Home\Catalog.cshtml" />
     <Content Include="Views\Home\SignUp.cshtml" />
+    <Content Include="Views\Sales\RejectedEstimate.cshtml" />
     <Content Include="Views\Technician\WorkOrders.cshtml" />
     <Content Include="Views\Technician\TestResults.cshtml" />
     <None Include="Web.Debug.config">
