@@ -192,6 +192,7 @@
     <Content Include="Views\Home\NotAuthorized.cshtml" />
     <Content Include="Views\Home\LogOut.cshtml" />
     <Content Include="Views\Home\Catalog.cshtml" />
+    <Content Include="Views\Home\SignUp.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

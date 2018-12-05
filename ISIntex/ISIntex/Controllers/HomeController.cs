@@ -39,7 +39,27 @@ namespace ISIntex.Controllers
 
         public ActionResult SignUp()
         {
+            ViewBag.passwordError = null;
             return View();
+        }
+
+        //Post: SignUp
+        [HttpPost]
+        public ActionResult SignUp(Customer customer , string password)
+        {
+            if (ModelState.IsValid && password != "")
+            {
+                return View("Login");
+            }
+            else
+            {
+                if (password == "")
+                {
+                    ViewBag.passwordError = "This is required";
+                }
+                return View("SignUp");
+            }
+ 
         }
 
         // GET: Log In
