@@ -11,15 +11,25 @@ namespace ISIntex.Controllers
     public class ManagerController : Controller
     {
 
-        private NorthwestContext db = new NorthwestContext();
+        private static NorthwestContext db = new NorthwestContext();
+        public static List<Employee> EmployeeInfo = db.Employees.ToList();
 
         // GET: Customer
         public ActionResult Index()
         {
             if (Authorized.userAuth == "manager")
             {
-                var customers = db.Customers;
-                return View(customers.ToList());
+                foreach (var item in EmployeeInfo)
+                {
+                    if (item.EmployeeEmail == Authorized.Email)
+                    {
+                        Authorized.FirstName = item.FirstName;
+                        Authorized.LastName = item.LastName;
+                        Authorized.EmployeeID = item.EmployeeID;
+                    }
+                }
+
+                return View();
             }
             else
             {

@@ -26,12 +26,8 @@ namespace ISIntex.Models
         public static int SalesRepID = 0;
         public static string PaymentInfo = null;
 
-        /*/Employee Logged In Info
-        public static int EmployeeID = null;
-        public static string EmployeeFirstName = null;
-        public static string EmployeeLastName = null;
-        public static string EmployeeEmail = null;
-        public static int UserTypeID = null;
-        */
+        //Employee ID 
+        public static int EmployeeID = 0;
+
     }
 }
