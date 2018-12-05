@@ -11,5 +11,27 @@ namespace ISIntex.Models
         [Key]
         public static string userAuth = null;
         public static bool loginStatus = false;
+
+        //Customer Logged in Info
+        public static int CustomerID = 0;
+        public static string FirstName = null;
+        public static string LastName = null;
+        public static string Company = null;
+        public static string Email = null;
+        public static string Phone = null;
+        public static string Address = null;
+        public static string City = null;
+        public static string State = null;
+        public static string Zip = null;
+        public static int SalesRepID = 0;
+        public static string PaymentInfo = null;
+
+        /*/Employee Logged In Info
+        public static int EmployeeID = null;
+        public static string EmployeeFirstName = null;
+        public static string EmployeeLastName = null;
+        public static string EmployeeEmail = null;
+        public static int UserTypeID = null;
+        */
     }
 }
