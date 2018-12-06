@@ -1,0 +1,12 @@
+﻿@model ISIntex.Models.TestResults
+
+@{
+    ViewBag.Title = "ResultAdded";
+}
+
+<h2>Thanks!</h2>
+
+<p>A test result file has been added for LT Number: @Model.LTNumber and Compound Sequence Code: @Model.CompoundSequenceCode</p>
+<input type="button" class="btn btn-info" value="Return to List" onclick="location.href='@Url.Action("Index", "Technician")'" />
+
+

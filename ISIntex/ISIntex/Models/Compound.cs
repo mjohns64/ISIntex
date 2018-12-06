@@ -44,6 +44,6 @@ namespace ISIntex.Models
         [DisplayName("Maximum Tolerated Dose (in milliliters")]
         public int? MTD { get; set; }
 
-        public ICollection<TestResults> TestResults {get; set;}
+        public virtual ICollection<TestResults> TestResults {get; set;}
     }
 }

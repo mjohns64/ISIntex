@@ -3,8 +3,51 @@
     ViewBag.Title = "Index";
 }
 
-
-<h2>Manager Index</h2>
-
-@Html.ActionLink("Sales by Rep", "SalesByRep")
+<div class="container body-content" style="margin-top: 20px;">
+    <h1>Manager Account</h1>
+    <h3>Welcome, @ISIntex.Models.Authorized.FirstName @ISIntex.Models.Authorized.LastName to your Management Portal</h3>
+    <hr />
+    <h3>Get started</h3>
+    <div class="row">
+        <div class="col-lg-4 mb-4">
+            <div class="card h-100">
+                <h4 class="card-header">See Sales Rep Profitablility</h4>
+                <div class="cardCatalog">
+                    <div class="gloss" style="height: 200px; font-size: 1.5em; padding: 10px; padding-top: 70px" align="center">
+                        <p>View a list of all sales reps and the amount they have brought in</p>
+                    </div>
+                </div>
+                <div class="card-footer">
+                    <a href="Manager/SalesByRep" class="btn btn-outline-info btn-block">See Sales Rep Profitablility</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-4 mb-4">
+            <div class="card h-100">
+                <h4 class="card-header">See Assay Profitability</h4>
+                <div class="cardCatalog">
+                    <div class="gloss" style="height: 200px; font-size: 1.5em; padding: 10px; padding-top: 70px;" align="center">
+                        <p>View a list of all Assays and their profitablility</p>
+                    </div>
+                </div>
+                <div class="card-footer">
+                    <a href="Manager/AssayProfitability" class="btn btn-outline-info btn-block">See Assays Profitability</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-4 mb-4">
+            <div class="card h-100">
+                <h4 class="card-header">See Unnassigned Customers</h4>
+                <div class="cardCatalog">
+                    <div class="gloss" style="height: 200px; font-size: 1.5em; padding: 10px; padding-top: 70px;" align="center">
+                        <p>View all new customers that have not yet been assigned to a Sales Rep</p>
+                    </div>
+                </div>
+                <div class="card-footer">
+                    <a href="Manager/UnassignedCustomers" class="btn btn-outline-info btn-block">See Unassigned Customer</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 
