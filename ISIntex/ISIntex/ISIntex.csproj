@@ -187,6 +187,8 @@
     <Compile Include="ViewModels\MyOrders.cs" />
     <Compile Include="ViewModels\SalesByRep.cs" />
     <Compile Include="ViewModels\SalesList.cs" />
+    <Compile Include="ViewModels\TestAverages.cs" />
+    <Compile Include="ViewModels\UnassignedCustomers.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\web.config" />
@@ -218,7 +220,12 @@
     <Content Include="Views\Technician\AddTestResultWText.cshtml" />
     <Content Include="Views\Technician\ResultAdded.cshtml" />
     <Content Include="Views\Technician\AddTestResult.cshtml" />
+    <Content Include="Views\Manager\UnassignedCustomers.cshtml" />
+    <Content Include="Views\Manager\TestAverages.cshtml" />
     <Content Include="Views\Customer\MyOrderView.cshtml" />
+    <Content Include="Views\Technician\WorkOrderforcopying.cshtml" />
+    <Content Include="Views\Technician\workOrder2.cshtml" />
+    <Content Include="Views\Technician\EditTestResult.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

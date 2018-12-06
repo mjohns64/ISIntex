@@ -2,6 +2,7 @@
 using ISIntex.Models;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.IO;
 using System.Linq;
 using System.Web;
@@ -41,7 +42,7 @@ namespace ISIntex.Controllers
         {
             if (Authorized.userAuth == "technician")
             {
-                var stuffyStuff = db.Compounds.OrderByDescending(c => c.DateReceived).Take(30).ToList();
+                var stuffyStuff = db.WorkOrders.OrderByDescending(c => c.DateReceived).Take(30).ToList();
 
                 TempData["WOList"] = stuffyStuff;
                 return View("WorkOrders", stuffyStuff);
@@ -50,6 +51,109 @@ namespace ISIntex.Controllers
             {
                 return RedirectToAction("NotAuthorized", "Home");
             }
+        }
+
+        public ActionResult Edit(int LTNum)
+        {
+            WorkOrder workOrder = db.WorkOrders.Find(LTNum);
+
+            return View("EditTestResult", workOrder);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Edit([Bind(Include = "LTNumber,OptionalTests, Weight, appearance, MTD, Status")] WorkOrder workOrder)
+        {
+            if (ModelState.IsValid)
+            {
+                WorkOrder dbWorkOrder = db.WorkOrders.Find(workOrder.LTNumber);
+
+                dbWorkOrder.ReceivedBy = Authorized.EmployeeID;
+                if (dbWorkOrder.OptionalTests != workOrder.OptionalTests)
+                {
+                    dbWorkOrder.OptionalTests = workOrder.OptionalTests;
+                    if (dbWorkOrder.AssayID == 1)
+                    {
+                        if (dbWorkOrder.OptionalTests == true)
+                        {
+                            dbWorkOrder.EstimatedPrice = 1000;
+                        }
+                        else
+                        {
+                            dbWorkOrder.EstimatedPrice = 600;
+                        }
+                    }
+                    else if (dbWorkOrder.AssayID == 2)
+                    {
+                        if (dbWorkOrder.OptionalTests == true)
+                        {
+                            dbWorkOrder.EstimatedPrice = 2100;
+                        }
+                        else
+                        {
+                            dbWorkOrder.EstimatedPrice = 1200;
+                        }
+                    }
+                    else if (dbWorkOrder.AssayID == 3)
+                    {
+                        if (dbWorkOrder.OptionalTests == true)
+                        {
+                            dbWorkOrder.EstimatedPrice = 2400;
+                        }
+                        else
+                        {
+                            dbWorkOrder.EstimatedPrice = 3400;
+                        }
+                    }
+                    else if (dbWorkOrder.AssayID == 4)
+                    {
+                        if (dbWorkOrder.OptionalTests == true)
+                        {
+                            dbWorkOrder.EstimatedPrice = 1000;
+                        }
+                        else
+                        {
+                            dbWorkOrder.EstimatedPrice = 4000;
+                        }
+                    }
+                    else if (dbWorkOrder.AssayID == 5)
+                    {
+                        if (dbWorkOrder.OptionalTests == true)
+                        {
+                            dbWorkOrder.EstimatedPrice = 7200;
+                        }
+                        else
+                        {
+                            dbWorkOrder.EstimatedPrice = 9200;
+                        }
+                    }
+                    else if (dbWorkOrder.AssayID == 6)
+                    {
+                        if (dbWorkOrder.OptionalTests == true)
+                        {
+                            dbWorkOrder.EstimatedPrice = 7500;
+                        }
+                        else
+                        {
+                            dbWorkOrder.EstimatedPrice = 10500;
+                        }
+                    }
+
+                    dbWorkOrder.ActualPrice = dbWorkOrder.EstimatedPrice * (decimal).95;
+                }
+                
+
+
+                dbWorkOrder.Weight = workOrder.Weight;
+                dbWorkOrder.appearance = workOrder.appearance;
+                dbWorkOrder.MTD = workOrder.MTD;
+                dbWorkOrder.Status = workOrder.Status;
+
+                db.Entry(dbWorkOrder).State = EntityState.Modified;
+                db.SaveChanges();
+                return RedirectToAction("WorkOrders");
+            }
+            return View(workOrder);
         }
 
         public ActionResult TestResults(int LTNum, int CSC)
@@ -84,18 +188,17 @@ namespace ISIntex.Controllers
             }
         }
 
-        public ActionResult AddTestResult(int LTNum, int CSC)
+        public ActionResult AddTestResult(int LTNum)
         {
             if (Authorized.userAuth == "technician")
-            {
-                TestResults testResult = new TestResults();
-                testResult.LTNumber = LTNum;
-                testResult.CompoundSequenceCode = CSC;
+            {              
 
-                TempData["testResult"] = testResult;
+                WorkOrder workOrder = db.WorkOrders.Find(LTNum);
+
+                TempData["WorkOrder"] = workOrder;
 
                 //return View(testResult);
-                return View();
+                return View(workOrder);
             }
             else
             {
@@ -108,19 +211,15 @@ namespace ISIntex.Controllers
         {
             if (Authorized.userAuth == "technician")
             {
-                TestResults result = (TestResults)TempData["testResult"];
+                WorkOrder workOrder = (WorkOrder)TempData["WorkOrder"];
 
                 byte[] uploadedFile = new byte[fileUpload.InputStream.Length];
                 fileUpload.InputStream.Read(uploadedFile, 0, uploadedFile.Length);
 
-                TestResults newTestResult = db.TestResultss.Create();
-                newTestResult.LTNumber = result.LTNumber;
-                newTestResult.CompoundSequenceCode = result.CompoundSequenceCode;
-                newTestResult.TestDocumentation = uploadedFile.ToArray();
-
-                db.TestResultss.Add(newTestResult);
+                workOrder.TestResultFile = uploadedFile.ToArray();
+                db.Entry(workOrder).State = EntityState.Modified;
                 db.SaveChanges();
-                return View("ResultAdded", newTestResult);
+                return View("ResultAdded", workOrder);
             }
             else
             {
@@ -151,7 +250,7 @@ namespace ISIntex.Controllers
                 sw.WriteLine("\"LT Number\",\"Compound Sequence Code\",\"Weight\",\"Molecular Mass\",\"Compound Name\",\"Quantity\",\"Date Received\",\"Date Due\", \"Appearance\", \"Maximum Tolerable Dose\"");
 
                 Response.ClearContent();
-                Response.AddHeader("content-disposition", "attachment;filename=registereduser.csv");
+                Response.AddHeader("content-disposition", "attachment;filename=Work Orders.csv");
                 Response.ContentType = "application/octet-stream";
 
                 var compounds = db.Compounds.OrderByDescending(c => c.DateReceived).Take(30).ToList();
@@ -183,21 +282,12 @@ namespace ISIntex.Controllers
             }
         }
 
-        public ActionResult DownloadTestResult()
+        public ActionResult DownloadTestResult(int LTNum)
         {
-            if (Authorized.userAuth == "technician")
-            {
-                TestResults testResult = new TestResults();
+                WorkOrder workOrder = db.WorkOrders.Find(LTNum);
 
-                testResult = db.TestResultss.FirstOrDefault();
-
-                Response.AppendHeader("content-disposition", "attachment; filename=file.txt"); //this will open in a new tab.. remove if you want to open in the same tab.
-                return File(testResult.TestDocumentation, "plain/text");
-            }
-            else
-            {
-                return RedirectToAction("NotAuthorized", "Home");
-            }
+                Response.AppendHeader("content-disposition", "attachment; filename=" + LTNum + "TestResults.txt"); //this will download the file
+                return File(workOrder.TestResultFile, "plain/text");
 
         }
     }

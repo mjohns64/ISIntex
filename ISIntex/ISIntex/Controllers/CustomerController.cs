@@ -109,7 +109,7 @@ namespace ISIntex.Controllers
 
 
             if (workOrder.AssayID == 1)
-{
+            {
                 if (workOrder.OptionalTests == true)
                 {
                     workOrder.EstimatedPrice = 1000;
