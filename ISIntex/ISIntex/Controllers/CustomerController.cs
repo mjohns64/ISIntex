@@ -12,8 +12,11 @@ namespace ISIntex.Controllers
     {
 
         private static NorthwestContext db = new NorthwestContext();
+
         public  List<Customer> CustomerInfo = db.Customers.ToList();
-        public  List<WorkOrder> workOrder = db.WorkOrders.ToList();
+        public  List<WorkOrder> workOrder = db.WorkOrders.ToList();        
+        public List<RejectedEstimate> rejectedEstimates = db.RejectedEstimates.ToList();
+
 
 
         // GET: Customer
