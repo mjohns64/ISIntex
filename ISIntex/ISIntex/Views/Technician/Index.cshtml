@@ -3,5 +3,26 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Technician Index</h2>
+<div class="container body-content" style="margin-top: 20px;">
+    <h1>Technician Portal</h1>
+    <h3>Welcome, @ISIntex.Models.Authorized.FirstName @ISIntex.Models.Authorized.LastName to your Technician Portal</h3>
+    <hr />
+    <h3>Get started</h3>
+    <div class="row">
+        <div class="col-lg-4 mb-4">
+            <div class="card h-100">
+                <h4 class="card-header">See This weeks Orders</h4>
+                <div class="cardCatalog">
+                    <div class="gloss" style="height: 200px; font-size: 1.5em; padding: 10px; padding-top: 70px" align="center">
+                        <p>View a list of work orders for this week</p>
+                    </div>
+                </div>
+                <div class="card-footer">
+                    <a href="Technician/WorkOrders" class="btn btn-outline-info btn-block">See Orders</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
 
