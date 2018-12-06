@@ -20,9 +20,6 @@ namespace ISIntex.Models
 
         public string Comments { get; set; }
 
-        [DisplayName("LT #")]
-        public int LTNumber { get; set; }
-
         [DisplayName("Estimated Price")]
         public decimal EstimatedPrice { get; set; }
 
@@ -32,6 +29,8 @@ namespace ISIntex.Models
         public int Element2 { get; set; }
         public int Element1Quantity { get; set; }
         public int Element2Quantity { get; set; }
+        public string CompoundName { get; set; }
+        public bool OptionalTests { get; set; }
 
 
     }
