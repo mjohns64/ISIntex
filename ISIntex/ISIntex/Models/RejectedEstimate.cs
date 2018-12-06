@@ -30,7 +30,7 @@ namespace ISIntex.Models
         public int Element1Quantity { get; set; }
         public int Element2Quantity { get; set; }
         public string CompoundName { get; set; }
-        public bool OptionalTests { get; set; }
+        public bool? OptionalTests { get; set; }
 
 
     }

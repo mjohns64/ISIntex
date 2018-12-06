@@ -15,6 +15,7 @@ namespace ISIntex.Controllers
         private static NorthwestContext db = new NorthwestContext();
         public static List<Employee> EmployeeInfo = db.Employees.ToList();
         public IEnumerable<SalesList> MySalesList = db.Database.SqlQuery<SalesList>("SELECT * FROM Customer WHERE SalesRepID = " + Authorized.EmployeeID);
+        public IEnumerable<RejectedEstimates> RejectedEstimatesList = db.Database.SqlQuery<RejectedEstimates>("SELECT RejectedEstimate.EstimateID, Customer.FirstName, Customer.LastName, Customer.Company, Customer.Email, Customer.Phone, RejectedEstimate.Comments, RejectedEstimate.EstimatedPrice, RejectedEstimate.AssayID, RejectedEstimate.CompoundName, RejectedEstimate.OptionalTests FROM RejectedEstimate INNER JOIN Customer ON RejectedEstimate.CustomerID = Customer.CustomerID Order BY Customer.LastName");
 
         // GET: Customer
         public ActionResult Index()
@@ -43,7 +44,7 @@ namespace ISIntex.Controllers
         {
             if (Authorized.userAuth == "sales")
             {
-                return View(db.RejectedEstimates.ToList());
+                return View(RejectedEstimatesList);
             }
             else
             {
