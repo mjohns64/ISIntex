@@ -1,5 +1,6 @@
 ﻿using ISIntex.DAL;
 using ISIntex.Models;
+using ISIntex.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,14 +12,11 @@ namespace ISIntex.Controllers
     public class CustomerController : Controller
     {
 
-        private static NorthwestContext db = new NorthwestContext();
-
-        public  List<Customer> CustomerInfo = db.Customers.ToList();
-        public  List<WorkOrder> workOrder = db.WorkOrders.ToList();        
-    
-
-
-
+       private static NorthwestContext db = new NorthwestContext();
+       public  List<Customer> CustomerInfo = db.Customers.ToList();
+       public  List<WorkOrder> workOrder = db.WorkOrders.ToList();
+       public IEnumerable<MyOrders> MyOrdersList = db.Database.SqlQuery<MyOrders>("select CustomerID, ActualPrice, Weight, MolecularMass, CompoundName, Quantity, DateReceived, DateDue, Comments, AssayID, LTNumber, TestResultFile from workorder where CustomerID = " + Authorized.CustomerID);
+               
         // GET: Customer
         public ActionResult Index()
         {
@@ -56,8 +54,33 @@ namespace ISIntex.Controllers
 
 
         [HttpPost]
-        public ActionResult OrderForm(WorkOrder workOrder)
+        public ActionResult OrderForm(WorkOrder workOrder, string AssayName)
         {
+
+            if (AssayName == "Biochemical Pharmacology(BP)")
+            {
+                workOrder.AssayID = 1; 
+            }
+            else if (AssayName == "DiscoveryScreen® (DS)")
+            {
+                workOrder.AssayID = 2;
+            }
+            else if (AssayName == "ImmunoScreen® (IS)")
+            {
+                workOrder.AssayID = 3;
+            }
+            else if (AssayName == "ProfilingScreen® (PF)")
+            {
+                workOrder.AssayID = 4;
+            }
+            else if (AssayName == "PharmaScreen® (PS)")
+            {
+                workOrder.AssayID = 5;
+            }
+            else 
+            {
+                workOrder.AssayID = 6;
+            }
 
             //customerID we grab from the global model
             workOrder.CustomerID = Authorized.CustomerID;
@@ -228,10 +251,19 @@ namespace ISIntex.Controllers
 
         }
 
+        public ActionResult DownloadTestResult(int LTNum)
+        {
+            WorkOrder workOrder = db.WorkOrders.Find(LTNum);
+
+            Response.AppendHeader("content-disposition", "attachment; filename=" + LTNum + "TestResults.txt"); //this will download the file
+            return File(workOrder.TestResultFile, "plain/text");
+
+        }
+
         public ActionResult MyOrderView()
         {
 
-            return View(workOrder); 
+            return View(MyOrdersList); 
 
         }
 

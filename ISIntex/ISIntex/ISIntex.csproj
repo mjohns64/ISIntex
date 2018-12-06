@@ -182,6 +182,7 @@
     <Compile Include="Models\WorkOrder.cs" />
     <Compile Include="Models\WorkOrderTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ViewModels\MyOrders.cs" />
     <Compile Include="ViewModels\SalesByRep.cs" />
     <Compile Include="ViewModels\SalesList.cs" />
   </ItemGroup>
@@ -209,13 +210,13 @@
     <Content Include="Views\Manager\Index.cshtml" />
     <Content Include="Views\Manager\SalesByRep.cshtml" />
     <Content Include="Views\Customer\Confirmation.cshtml" />
-    <Content Include="Views\Customer\MyOrderView.cshtml" />
     <Content Include="Views\Customer\Estimate.cshtml" />
     <Content Include="Views\Customer\OrderForm.cshtml" />
     <Content Include="Views\Customer\Reject.cshtml" />
     <Content Include="Views\Technician\AddTestResultWText.cshtml" />
     <Content Include="Views\Technician\ResultAdded.cshtml" />
     <Content Include="Views\Technician\AddTestResult.cshtml" />
+    <Content Include="Views\Customer\MyOrderView.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
