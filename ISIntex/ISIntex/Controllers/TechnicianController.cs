@@ -55,9 +55,16 @@ namespace ISIntex.Controllers
 
         public ActionResult Edit(int LTNum)
         {
-            WorkOrder workOrder = db.WorkOrders.Find(LTNum);
+            if (Authorized.userAuth == "technician")
+            {
+                WorkOrder workOrder = db.WorkOrders.Find(LTNum);
 
-            return View("EditTestResult", workOrder);
+                return View("EditTestResult", workOrder);
+            }
+            else
+            {
+                return RedirectToAction("NotAuthorized", "Home");
+            }
         }
 
         [HttpPost]
@@ -284,11 +291,17 @@ namespace ISIntex.Controllers
 
         public ActionResult DownloadTestResult(int LTNum)
         {
+            if (Authorized.userAuth == "technician")
+            {
                 WorkOrder workOrder = db.WorkOrders.Find(LTNum);
 
                 Response.AppendHeader("content-disposition", "attachment; filename=" + LTNum + "TestResults.txt"); //this will download the file
                 return File(workOrder.TestResultFile, "plain/text");
-
+            }
+            else
+            {
+                return RedirectToAction("NotAuthorized", "Home");
+            }
         }
     }
 }

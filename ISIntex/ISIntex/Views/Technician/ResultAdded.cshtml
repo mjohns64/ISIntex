@@ -4,9 +4,11 @@
     ViewBag.Title = "ResultAdded";
 }
 
-<h2>Thanks!</h2>
+<div class="container" style="padding-top: 25px;">
+    <h2>Success</h2>
+    <p>A test result file has been added for LT Number: @Model.LTNumber</p>
+    <input type="button" class="btn btn-outline-info" value="Return to List" onclick="location.href='@Url.Action("WorkOrders", "Technician")'" />
+</div>
 
-<p>A test result file has been added for LT Number: @Model.LTNumber</p>
-<input type="button" class="btn btn-info" value="Return to List" onclick="location.href='@Url.Action("WorkOrders", "Technician")'" />
 
 

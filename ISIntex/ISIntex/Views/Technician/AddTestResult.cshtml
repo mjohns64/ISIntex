@@ -4,10 +4,8 @@
     ViewBag.Title = "Add Test Result";
 }
 
-<h2 style="padding-left:20px">Add Test Result</h2>
-
-    
-
+<div class="container" style="padding-top: 25px;">
+    <h2 style="padding-left:20px">Add Test Result</h2>
     <div class="form-horizontal" style="padding-left:20px">
         <h4>LT Number: @Html.DisplayFor(model => model.LTNumber)</h4>
         <hr />
@@ -31,9 +29,11 @@
         </div>
     </div>
 
-<div>
-    @Html.ActionLink("Back to List", "WorkOrders")
+    <div>
+        @Html.ActionLink("Back to List", "WorkOrders")
+    </div>
 </div>
+
 
 <script src="~/Scripts/jquery-1.10.2.min.js"></script>
 <script src="~/Scripts/jquery.validate.min.js"></script>

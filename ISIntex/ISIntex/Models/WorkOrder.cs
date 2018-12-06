@@ -22,9 +22,9 @@ namespace ISIntex.Models
         public string Status { get; set; }
         [DisplayName("Assay")]
         public int? AssayID { get; set; }
-        [DisplayName("Element 1")]
+        [DisplayName("Atomic Number of Element 1")]
         public int? Element1 { get; set; }
-        [DisplayName("Element 2")]
+        [DisplayName("Atomic Number of Element 2")]
         public int? Element2 { get; set; }
         [DisplayName("Element 1 Quantity")]
         public int? Element1Qty { get; set; }
@@ -38,7 +38,7 @@ namespace ISIntex.Models
 
         [DisplayName("Compound Name")]
         public string CompoundName { get; set; }
-        [DisplayName("Quantity (in milliliters")]
+        [DisplayName("Quantity (in milliliters)")]
         public int Quantity { get; set; }
         public int? ReceivedBy { get; set; }
         [DisplayName("Date Received")]

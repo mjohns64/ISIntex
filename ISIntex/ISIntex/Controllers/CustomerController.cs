@@ -47,9 +47,14 @@ namespace ISIntex.Controllers
 
         public ActionResult OrderForm()
         {
-
-            return View(); 
-
+            if (Authorized.userAuth == "customer")
+            {
+                return View();
+            }
+            else
+            {
+                return RedirectToAction("NotAuthorized", "Home");
+            }
         }
 
 
@@ -185,86 +190,111 @@ namespace ISIntex.Controllers
         
         public ActionResult Accept()
         {
-            WorkOrder workOrder = (WorkOrder)TempData["OrderForm"];
+            if (Authorized.userAuth == "customer")
+            {
+                WorkOrder workOrder = (WorkOrder)TempData["OrderForm"];
 
-            //ltnum calced by db
-
-           
-
-            //DateReceived. Calculate this to be today's data.
-            workOrder.DateReceived = DateTime.Today;
-            //Date Due. Take today's date and add 1 week to it.
-            workOrder.DateDue = DateTime.Today.AddDays(7);
+                //ltnum calced by db
 
 
-            //status is set to "Received"
-            workOrder.Status = "Received";
 
-            //Set actual price == to est price
-            workOrder.ActualPrice = workOrder.EstimatedPrice * (decimal).95;
+                //DateReceived. Calculate this to be today's data.
+                workOrder.DateReceived = DateTime.Today;
+                //Date Due. Take today's date and add 1 week to it.
+                workOrder.DateDue = DateTime.Today.AddDays(7);
 
-            //Appeareance is null for now. Technician can enter.
 
-            //MTD is null. technician entered.
+                //status is set to "Received"
+                workOrder.Status = "Received";
 
-            //Element 1 is user entered
+                //Set actual price == to est price
+                workOrder.ActualPrice = workOrder.EstimatedPrice * (decimal).95;
 
-            //Element 2 is user entered
+                //Appeareance is null for now. Technician can enter.
 
-            //Qtys are user entered
+                //MTD is null. technician entered.
 
-            //Testresultfile is null for now. Technician uploaded.
+                //Element 1 is user entered
 
-            //optionalTests are user set.
+                //Element 2 is user entered
 
-            //add to database
-            db.WorkOrders.Add(workOrder);
+                //Qtys are user entered
 
-            db.SaveChanges();
+                //Testresultfile is null for now. Technician uploaded.
 
-            //save changes
-            return View("Confirmation", workOrder);
+                //optionalTests are user set.
+
+                //add to database
+                db.WorkOrders.Add(workOrder);
+
+                db.SaveChanges();
+
+                //save changes
+                return View("Confirmation", workOrder);
+            }
+            else
+            {
+                return RedirectToAction("NotAuthorized", "Home");
+            }
+            
         }
 
 
         public ActionResult Reject()
         {
-            WorkOrder workOrder = (WorkOrder)TempData["OrderForm"];
-            RejectedEstimate rejectedEstimate = new RejectedEstimate();
+            if (Authorized.userAuth == "customer")
+            {
+                WorkOrder workOrder = (WorkOrder)TempData["OrderForm"];
+                RejectedEstimate rejectedEstimate = new RejectedEstimate();
 
-            rejectedEstimate.EstimatedPrice = (decimal)workOrder.EstimatedPrice;
+                rejectedEstimate.EstimatedPrice = (decimal)workOrder.EstimatedPrice;
 
-            rejectedEstimate.Comments = workOrder.Comments;
-            rejectedEstimate.AssayID = (int)workOrder.AssayID;
-            rejectedEstimate.CustomerID = (int)workOrder.CustomerID;
-            rejectedEstimate.Element1 = (int)workOrder.Element1;
-            rejectedEstimate.Element2 = (int)workOrder.Element2;
-            rejectedEstimate.Element1Quantity = (int)workOrder.Element2Qty;
-            rejectedEstimate.Element1Quantity = (int)workOrder.Element1Qty;
-            rejectedEstimate.CompoundName = workOrder.CompoundName;
-            rejectedEstimate.OptionalTests = (bool)workOrder.OptionalTests;
+                rejectedEstimate.Comments = workOrder.Comments;
+                rejectedEstimate.AssayID = (int)workOrder.AssayID;
+                rejectedEstimate.CustomerID = (int)workOrder.CustomerID;
+                rejectedEstimate.Element1 = (int)workOrder.Element1;
+                rejectedEstimate.Element2 = (int)workOrder.Element2;
+                rejectedEstimate.Element1Quantity = (int)workOrder.Element2Qty;
+                rejectedEstimate.Element1Quantity = (int)workOrder.Element1Qty;
+                rejectedEstimate.CompoundName = workOrder.CompoundName;
+                rejectedEstimate.OptionalTests = (bool)workOrder.OptionalTests;
 
-            db.RejectedEstimates.Add(rejectedEstimate);
-            db.SaveChanges();
+                db.RejectedEstimates.Add(rejectedEstimate);
+                db.SaveChanges();
 
-            return View("Reject", rejectedEstimate);
-
+                return View("Reject", rejectedEstimate);
+            }
+            else
+            {
+                return RedirectToAction("NotAuthorized", "Home");
+            }
         }
 
         public ActionResult DownloadTestResult(int LTNum)
         {
-            WorkOrder workOrder = db.WorkOrders.Find(LTNum);
+            if (Authorized.userAuth == "customer")
+            {
+                WorkOrder workOrder = db.WorkOrders.Find(LTNum);
 
-            Response.AppendHeader("content-disposition", "attachment; filename=" + LTNum + "TestResults.txt"); //this will download the file
-            return File(workOrder.TestResultFile, "plain/text");
-
+                Response.AppendHeader("content-disposition", "attachment; filename=" + LTNum + "TestResults.txt"); //this will download the file
+                return File(workOrder.TestResultFile, "plain/text");
+            }
+            else
+            {
+                return RedirectToAction("NotAuthorized", "Home");
+            }
         }
 
         public ActionResult MyOrderView()
         {
-
-            return View(MyOrdersList); 
-
+            if (Authorized.userAuth == "customer")
+            {
+                return View(MyOrdersList);
+            }
+            else
+            {
+                return RedirectToAction("NotAuthorized", "Home");
+            }
         }
 
 
