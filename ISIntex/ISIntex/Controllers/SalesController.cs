@@ -14,7 +14,7 @@ namespace ISIntex.Controllers
     {
         private static NorthwestContext db = new NorthwestContext();
         public static List<Employee> EmployeeInfo = db.Employees.ToList();
-        public static IEnumerable<SalesList> MySalesList = db.Database.SqlQuery<SalesList>("SELECT * FROM Customer WHERE SalesRepID = 3");
+        public IEnumerable<SalesList> MySalesList = db.Database.SqlQuery<SalesList>("SELECT * FROM Customer WHERE SalesRepID = " + Authorized.EmployeeID);
 
         // GET: Customer
         public ActionResult Index()
