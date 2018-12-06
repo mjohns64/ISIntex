@@ -1,4 +1,4 @@
-﻿@model IEnumerable<ISIntex.Models.RejectedEstimate>
+﻿@model IEnumerable<ISIntex.Models.WorkOrder>
 
 @{
     ViewBag.Title = "MyOrderView";
@@ -24,19 +24,13 @@
             @Html.DisplayNameFor(model => model.EstimatedPrice)
         </th>
         <th>
+            @Html.DisplayNameFor(model => model.ActualPrice)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Status)
+        </th>
+        <th>
             @Html.DisplayNameFor(model => model.AssayID)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Element1)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Element2)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Element1Quantity)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Element2Quantity)
         </th>
         <th></th>
     </tr>
@@ -56,24 +50,18 @@
             @Html.DisplayFor(modelItem => item.EstimatedPrice)
         </td>
         <td>
+            @Html.DisplayFor(modelItem => item.ActualPrice)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Status)
+        </td>
+        <td>
             @Html.DisplayFor(modelItem => item.AssayID)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.Element1)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Element2)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Element1Quantity)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Element2Quantity)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.EstimateID }) |
-            @Html.ActionLink("Details", "Details", new { id=item.EstimateID }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.EstimateID })
+            @Html.ActionLink("Edit", "Edit", new { id=item.WorkOrderID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.WorkOrderID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.WorkOrderID })
         </td>
     </tr>
 }

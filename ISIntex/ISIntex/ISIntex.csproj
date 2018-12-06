@@ -166,6 +166,7 @@
     <Compile Include="Models\Authorized.cs" />
     <Compile Include="Models\Compound.cs" />
     <Compile Include="Models\Customer.cs" />
+    <Compile Include="Models\Element.cs" />
     <Compile Include="Models\Employee.cs" />
     <Compile Include="Models\Invoice.cs" />
     <Compile Include="Models\PeriodicViewModel.cs" />
@@ -203,9 +204,11 @@
     <Content Include="Views\Sales\MyClients.cshtml" />
     <Content Include="Views\Manager\Index.cshtml" />
     <Content Include="Views\Manager\SalesByRep.cshtml" />
-    <Content Include="Views\Customer\OrderForm.cshtml" />
     <Content Include="Views\Customer\Confirmation.cshtml" />
     <Content Include="Views\Customer\MyOrderView.cshtml" />
+    <Content Include="Views\Customer\Estimate.cshtml" />
+    <Content Include="Views\Customer\OrderForm.cshtml" />
+    <Content Include="Views\Customer\Reject.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
