@@ -1,4 +1,4 @@
-﻿@model IEnumerable<ISIntex.Models.Compound>
+﻿@model IEnumerable<ISIntex.Models.WorkOrder>
 
 @{
     ViewBag.Title = "WorkOrders";
@@ -6,7 +6,6 @@
 <div style="margin-left: 20px; margin-right: 20px; padding: 10px;">
     <h2>WorkOrders</h2>
     <input type="button" class="btn btn-info" value="Download CSV" onclick="location.href='@Url.Action("DownloadCSV", "Technician")'" />
-    <input type="button" class="btn btn-info" value="Download Test Result" onclick="location.href='@Url.Action("DownloadTestResult", "Technician")'" />
 
     <table class="table">
         <tr>
@@ -14,7 +13,19 @@
                 @Html.DisplayNameFor(model => model.LTNumber)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.CompoundSequenceCode)
+                @Html.DisplayNameFor(model => model.CompoundName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.AssayID)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.OptionalTests)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Comments)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Quantity)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Weight)
@@ -23,24 +34,24 @@
                 @Html.DisplayNameFor(model => model.MolecularMass)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.CompoundName)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Quantity)
-            </th>
-            <th>
                 @Html.DisplayNameFor(model => model.DateReceived)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.DateDue)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Appearance)
+                @Html.DisplayNameFor(model => model.appearance)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.MTD)
             </th>
-            <th></th>
+            <th>
+                @Html.DisplayNameFor(model => model.Status)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TestResultFile)
+            </th>
+            <th>Edit</th>
         </tr>
 
         @foreach (var item in Model)
@@ -50,7 +61,42 @@
                     @Html.DisplayFor(modelItem => item.LTNumber)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.CompoundSequenceCode)
+                    @Html.DisplayFor(modelItem => item.CompoundName)
+                </td>
+                <td>
+                    @if (item.AssayID == 1)
+                    {
+                        @:Biochemical Pharmacology
+                    }
+                    else if (item.AssayID == 2)
+                    {
+                        @:DiscoveryScreen
+                    }
+                    else if (item.AssayID == 3)
+                    {
+                        @:ImmunoScreen
+                    }
+                    else if (item.AssayID == 4)
+                    {
+                        @:ProfilingScreen
+                    }
+                    else if (item.AssayID == 5)
+                    {
+                        @:PharmaScreen
+                    }
+                    else if (item.AssayID == 6)
+                    {
+                        @:CustomScreen
+                    }
+                </td>
+                <td>
+                    @Html.Label(item.OptionalTests.HasValue == false ? "False" : item.OptionalTests.Value ? "True" : "False")
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Comments)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Quantity)
                 </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.Weight)
@@ -59,27 +105,32 @@
                     @Html.DisplayFor(modelItem => item.MolecularMass)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.CompoundName)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Quantity)
-                </td>
-                <td>
                     @Html.DisplayFor(modelItem => item.DateReceived)
                 </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.DateDue)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.Appearance)
+                    @Html.DisplayFor(modelItem => item.appearance)
                 </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.MTD)
                 </td>
                 <td>
-                    @Html.ActionLink("Edit", "TestResults", new { LtNum = item.LTNumber, CSC = item.CompoundSequenceCode }) |
-                    @Html.ActionLink("Add Result", "AddTestResult", new { LtNum = item.LTNumber, CSC = item.CompoundSequenceCode }) |
-                    @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+                    @Html.DisplayFor(modelItem => item.Status)
+                </td>
+                <td>
+                    @if (item.TestResultFile == null)
+                    {
+                        @Html.ActionLink("Add Result", "AddTestResult", new { LtNum = item.LTNumber })
+                    }
+                    else
+                    {
+                        @Html.ActionLink("Download Result", "DownloadTestResult", new { LtNum = item.LTNumber })
+                    }
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { LtNum = item.LTNumber })
                 </td>
             </tr>
         }
