@@ -15,7 +15,7 @@ namespace ISIntex.Controllers
        private static NorthwestContext db = new NorthwestContext();
        public  List<Customer> CustomerInfo = db.Customers.ToList();
        public  List<WorkOrder> workOrder = db.WorkOrders.ToList();
-       public IEnumerable<MyOrders> MyOrdersList = db.Database.SqlQuery<MyOrders>("select CustomerID, ActualPrice, Weight, MolecularMass, CompoundName, Quantity, DateReceived, DateDue, Comments, AssayID, LTNumber, TestResultFile from workorder where CustomerID = " + Authorized.CustomerID);
+       public IEnumerable<MyOrders> MyOrdersList = db.Database.SqlQuery<MyOrders>("select CustomerID, ActualPrice, Weight, MolecularMass, CompoundName, Quantity, DateReceived, DateDue, Comments, AssayID, LTNumber, TestResultFile, Status from workorder where CustomerID = " + Authorized.CustomerID);
                
         // GET: Customer
         public ActionResult Index()
