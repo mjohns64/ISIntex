@@ -8,10 +8,12 @@ using ISIntex.Models;
 
 namespace ISIntex.Controllers
 {
+
     public class HomeController : Controller
     {
 
-        private NorthwestContext db = new NorthwestContext();
+        private static NorthwestContext db = new NorthwestContext();
+        public static IEnumerable<UserCredentials> UserCredentials = db.Database.SqlQuery<UserCredentials>("Select * FROM UserCredientials;");
 
         // GET: Home
         public ActionResult Index()
@@ -49,6 +51,12 @@ namespace ISIntex.Controllers
         {
             if (ModelState.IsValid && password != "")
             {
+                db.Database.ExecuteSqlCommand("INSERT INTO UserCredientials (Username,Password,UserTypeID) VALUES ('"
+                    + customer.Email + "','"
+                    + password + "','"
+                    + "1');"
+                    );
+
                 db.Database.ExecuteSqlCommand("INSERT INTO customer (FirstName,LastName,Company,Email,Phone,Address,City,State,Zip) VALUES ('" 
                     + customer.FirstName + "','"
                     + customer.LastName + "','"
@@ -61,7 +69,9 @@ namespace ISIntex.Controllers
                     + customer.Zip + "');"
                     );
 
-                return View("Login");
+                Authorized.userAuth = "customer";
+                Authorized.loginStatus = true;
+                return RedirectToAction("Index", "Customer");
             }
             else
             {
@@ -107,15 +117,26 @@ namespace ISIntex.Controllers
             }
         }
 
-        // GET: Log In
+        // GET: Not Authorized
         public ActionResult NotAuthorized()
         {
             return View();
         }
 
-        // GET: Log In
+        // GET: Log Out
         public ActionResult LogOut()
         {
+            Authorized.CustomerID = 0;
+            Authorized.FirstName = null;
+            Authorized.LastName = null;
+            Authorized.Company = null;
+            Authorized.Email = null;
+            Authorized.Phone = null;
+            Authorized.Address = null;
+            Authorized.City = null;
+            Authorized.State = null;
+            Authorized.Zip = null;
+            Authorized.Email = null;
             Authorized.userAuth = null;
             Authorized.loginStatus = false;
             return View();
@@ -125,35 +146,42 @@ namespace ISIntex.Controllers
         [HttpPost]
         public ActionResult LoginRouter(string username, string password)
         {
-            if (username == "customer")
+            //Verify the username and password is Valid and change to loggin = true and identify type
+            foreach (var item in UserCredentials)
             {
-                Authorized.userAuth = "customer";
-                Authorized.loginStatus = true;
-                return RedirectToAction("Index" , "Customer");
+                if (item.Username.ToLower() == username.ToLower() && item.Password == password)
+                {
+                    Authorized.Email = username;
+
+                    if (item.UserTypeID == 1)
+                    {
+                        Authorized.userAuth = "customer";
+                        Authorized.loginStatus = true;
+                        return RedirectToAction("Index", "Customer");
+                    }
+                    else if (item.UserTypeID == 2)
+                    {
+                        Authorized.userAuth = "sales";
+                        Authorized.loginStatus = true;
+                        return RedirectToAction("Index", "Sales");
+                    }
+                    else if (item.UserTypeID == 3)
+                    {
+                        Authorized.userAuth = "manager";
+                        Authorized.loginStatus = true;
+                        return RedirectToAction("Index", "Manager");
+                    }
+                    else
+                    {
+                        Authorized.userAuth = "technician";
+                        Authorized.loginStatus = true;
+                        return RedirectToAction("Index", "Technician");
+                    }
+                }
             }
-            else if (username == "sales")
-            {
-                Authorized.userAuth = "sales";
-                Authorized.loginStatus = true;
-                return RedirectToAction("Index" , "Sales");
-            }
-            else if (username == "manager")
-            {
-                Authorized.userAuth = "manager";
-                Authorized.loginStatus = true;
-                return RedirectToAction("Index" , "Manager");
-            }
-            else if (username == "technician")
-            {
-                Authorized.userAuth = "technician";
-                Authorized.loginStatus = true;
-                return RedirectToAction("Index" , "Technician");
-            }
-            else
-            {
-                ViewBag.error = "Incorrect Username or Password";
-                return View("Login");
-            }
+
+            ViewBag.error = "Incorrect Username or Password";
+            return View("Login");
         }
     }
 }

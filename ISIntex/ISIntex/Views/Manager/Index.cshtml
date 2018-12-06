@@ -1,93 +1,53 @@
-﻿@model IEnumerable<ISIntex.Models.Customer>
-
+﻿
 @{
     ViewBag.Title = "Index";
 }
 
-<h2>Index</h2>
+<div class="container body-content" style="margin-top: 20px;">
+    <h1>Manager Account</h1>
+    <h3>Welcome, @ISIntex.Models.Authorized.FirstName @ISIntex.Models.Authorized.LastName to your Management Portal</h3>
+    <hr />
+    <h3>Get started</h3>
+    <div class="row">
+        <div class="col-lg-4 mb-4">
+            <div class="card h-100">
+                <h4 class="card-header">See Sales Rep Profitablility</h4>
+                <div class="cardCatalog">
+                    <div class="gloss" style="height: 200px; font-size: 1.5em; padding: 10px; padding-top: 70px" align="center">
+                        <p>View a list of all sales reps and the amount they have brought in</p>
+                    </div>
+                </div>
+                <div class="card-footer">
+                    <a href="Manager/SalesByRep" class="btn btn-outline-info btn-block">Get Estimate</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-4 mb-4">
+            <div class="card h-100">
+                <h4 class="card-header">See Assay Profitability</h4>
+                <div class="cardCatalog">
+                    <div class="gloss" style="height: 200px; font-size: 1.5em; padding: 10px; padding-top: 70px;" align="center">
+                        <p>View a list of all Assays and their profitablility</p>
+                    </div>
+                </div>
+                <div class="card-footer">
+                    <a href="Manager/AssayProfitability" class="btn btn-outline-info btn-block">Place an order</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-4 mb-4">
+            <div class="card h-100">
+                <h4 class="card-header">See Unnassigned Customers</h4>
+                <div class="cardCatalog">
+                    <div class="gloss" style="height: 200px; font-size: 1.5em; padding: 10px; padding-top: 70px;" align="center">
+                        <p>View all new customers that have not yet been assigned to a Sales Rep</p>
+                    </div>
+                </div>
+                <div class="card-footer">
+                    <a href="Manager/UnassignedCustomers" class="btn btn-outline-info btn-block">Place an order</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.FirstName)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.LastName)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Company)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Email)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Phone)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Address)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.City)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.State)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Zip)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.SalesRepID)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.PaymentInfo)
-        </th>
-        <th></th>
-    </tr>
-
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.FirstName)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.LastName)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Company)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Email)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Phone)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Address)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.City)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.State)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Zip)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.SalesRepID)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.PaymentInfo)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.CustomerID }) |
-            @Html.ActionLink("Details", "Details", new { id=item.CustomerID }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.CustomerID })
-        </td>
-    </tr>
-}
-
-</table>
