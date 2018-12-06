@@ -15,7 +15,7 @@ namespace ISIntex.Controllers
 
         public  List<Customer> CustomerInfo = db.Customers.ToList();
         public  List<WorkOrder> workOrder = db.WorkOrders.ToList();        
-        public List<RejectedEstimate> rejectedEstimates = db.RejectedEstimates.ToList();
+    
 
 
 

@@ -14,13 +14,14 @@ namespace ISIntex.Models
         public int EstimateID { get; set; }
         public int CustomerID { get; set; }
         public string Comments { get; set; }
-        public int LTNumber { get; set; }
         public decimal EstimatedPrice { get; set; }
         public int AssayID { get; set; }
         public int Element1 { get; set; }
         public int Element2 { get; set; }
         public int Element1Quantity { get; set; }
         public int Element2Quantity { get; set; }
+        public string CompoundName { get; set; }
+        public bool OptionalTests { get; set; }
 
 
     }
