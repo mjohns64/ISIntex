@@ -1,0 +1,41 @@
+﻿@model IEnumerable<ISIntex.ViewModels.TestAverages>
+
+@{
+    ViewBag.Title = "TestAverages";
+}
+
+<div class="container body-content" style="padding-top: 50px;">
+
+    <h2>TestAverages</h2>
+
+    <table class="table rejectedEstimateTable">
+        <tr>
+            <th class="thEndLeft">
+                @Html.DisplayNameFor(model => model.AssayID)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.AssayType)
+            </th>
+            <th class="thEndRight">
+                @Html.DisplayNameFor(model => model.TotalRevenue)
+            </th>
+
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.AssayID)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.AssayType)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TotalRevenue)
+                </td>
+            </tr>
+        }
+
+    </table>
+</div> 
