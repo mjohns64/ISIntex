@@ -185,6 +185,7 @@
     <Compile Include="Models\WorkOrderTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ViewModels\MyOrders.cs" />
+    <Compile Include="ViewModels\RejectedEstimates.cs" />
     <Compile Include="ViewModels\SalesByRep.cs" />
     <Compile Include="ViewModels\SalesList.cs" />
     <Compile Include="ViewModels\TestAverages.cs" />
@@ -209,7 +210,6 @@
     <Content Include="Views\Home\SignUp.cshtml" />
     <Content Include="Views\Technician\WorkOrders.cshtml" />
     <Content Include="Views\Technician\TestResults.cshtml" />
-    <Content Include="Views\Sales\RejectedEstimate.cshtml" />
     <Content Include="Views\Sales\MyClients.cshtml" />
     <Content Include="Views\Manager\Index.cshtml" />
     <Content Include="Views\Manager\SalesByRep.cshtml" />
@@ -226,6 +226,7 @@
     <Content Include="Views\Technician\WorkOrderforcopying.cshtml" />
     <Content Include="Views\Technician\workOrder2.cshtml" />
     <Content Include="Views\Technician\EditTestResult.cshtml" />
+    <Content Include="Views\Sales\RejectedEstimate.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
