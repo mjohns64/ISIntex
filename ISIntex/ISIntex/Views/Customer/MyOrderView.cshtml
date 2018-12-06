@@ -39,8 +39,12 @@
             @Html.DisplayNameFor(model => model.DateDue)
         </th>
         <th>
+            @Html.DisplayNameFor(model => model.Status)
+        </th>
+        <th>
             @Html.DisplayNameFor(model => model.TestResultFile)
         </th>
+
         <th></th>
     </tr>
 
@@ -74,10 +78,13 @@
             @Html.DisplayFor(modelItem => item.DateDue)
         </td>
         <td>
+            @Html.DisplayFor(modelItem => item.Status)
+        </td>
+        <td>
             @if (item.TestResultFile == null)
             {
                 @: No Test Results
-                }
+            }
             else
             {
                 @Html.ActionLink("Download Result", "DownloadTestResult", new { LTNum = item.LTNumber })
