@@ -5,7 +5,8 @@
 }
 
 <h2>WorkOrders</h2>
-
+<input type="button" class="btn btn-info" value="Download CSV" onclick="location.href='@Url.Action("DownloadCSV", "Technician")'" />
+<input type="button" class="btn btn-info" value="Download Test Result" onclick="location.href='@Url.Action("DownloadTestResult", "Technician")'" />
 <p>
     @Html.ActionLink("Create New", "Create")
 </p>
@@ -77,8 +78,8 @@
             @Html.DisplayFor(modelItem => item.MTD)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { LtNum = item.LTNumber, CSC = item.CompoundSequenceCode }) |
-            @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+            @Html.ActionLink("Edit", "TestResults", new { LtNum = item.LTNumber, CSC = item.CompoundSequenceCode }) |
+            @Html.ActionLink("Add Result", "AddTestResult", new { LtNum = item.LTNumber, CSC = item.CompoundSequenceCode }) |
             @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
         </td>
     </tr>

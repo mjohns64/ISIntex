@@ -12,10 +12,10 @@ namespace ISIntex.Models
     {
         [Key]
         public int TestResultID { get; set; }
-        public HttpPostedFileWrapper TestDocumentation { get; set; }
+        public byte[] TestDocumentation { get; set; }
         public int LTNumber { get; set; }
         public int CompoundSequenceCode { get; set; }
-        public Compound Compound { get; set; }
+        public virtual Compound Compound { get; set; }
         
 
     }
