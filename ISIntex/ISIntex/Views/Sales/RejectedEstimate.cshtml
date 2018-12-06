@@ -52,10 +52,16 @@
                     @Html.DisplayFor(modelItem => item.AssayID)
                 </td>
                 <td>
-                    @Html.ActionLink("Delete", "Delete", new {  id=item.EstimateID })
+                    @Html.ActionLink("Delete", "Delete", new { id = item.EstimateID })
                 </td>
             </tr>
         }
 
     </table>
+    <div class="row">
+        <div class="col-8"></div>
+        <div class="col-4">
+            <a class="btn btn-lg btn-outline-info btn-block" href="/Home/Login">Back to My Account</a>
+        </div>
+    </div>
 </div>

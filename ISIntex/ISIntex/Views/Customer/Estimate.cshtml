@@ -17,7 +17,7 @@
             </div>
         </div>
         <div class="card-footer">
-            <a @Html.ActionLink("Reject", "Reject") </a>
+            <input type="button" value="Reject" onclick="location.href='@Url.Action("Reject", "Customer")'" />
         </div>
     </div>
 </div>
@@ -31,7 +31,7 @@
             </div>
         </div>
         <div class="card-footer">
-            <input type="button" value="accept" onclick="location.href='@Url.Action("Accept", "Customer")'" />
+            <input type="button" value="Accept" onclick="location.href='@Url.Action("Accept", "Customer")'" />
         </div>
     </div>
 </div>
