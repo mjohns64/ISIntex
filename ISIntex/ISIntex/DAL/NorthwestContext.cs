@@ -27,7 +27,7 @@ namespace ISIntex.DAL
         public DbSet<UserType> UserTypes { get; set; }
         public DbSet<WorkOrder> WorkOrders { get; set; }
         public DbSet<WorkOrderTests> WorkOrderTestss { get; set; }
-
+        public DbSet<Element> Elements { get; set; }
 
 
     }
