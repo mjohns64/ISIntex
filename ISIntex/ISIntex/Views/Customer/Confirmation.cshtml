@@ -1,11 +1,11 @@
-﻿@model ISIntex.Models.RejectedEstimate
+﻿@model ISIntex.Models.WorkOrder
 
 @{
     ViewBag.Title = "Confirmation";
 }
 <img src="~/Content/images/pillWoman.jpg" class="center" height="42" width="42"/>
 
-<h2>Thank you for your Order!! You ordered @Model.Element1Quantity of element @Model.Element1 and you ordered @Model.Element2Quantity of element @Model.Element2 </h2>
-<h2> Your Price estimate is @Model.EstimatedPrice</h2>
+<h2>Thank you for your Order!! You ordered chemical compound @Model.CompoundName</h2>
+<h2> Your quote for this chemical compound is: $@Model.EstimatedPrice. We will have the testing completed by @Model.DateDue</h2>
 <h2> Here are the special requests you listed in the comments: @Model.Comments </h2>
 
