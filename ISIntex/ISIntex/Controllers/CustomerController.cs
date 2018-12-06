@@ -13,7 +13,7 @@ namespace ISIntex.Controllers
 
         private static NorthwestContext db = new NorthwestContext();
         public static List<Customer> CustomerInfo = db.Customers.ToList();
-        public static List<RejectedEstimate> rejectedEstimates = db.RejectedEstimates.ToList();
+        public List<RejectedEstimate> rejectedEstimates = db.RejectedEstimates.ToList();
 
 
         // GET: Customer
@@ -56,7 +56,7 @@ namespace ISIntex.Controllers
         public ActionResult OrderForm(RejectedEstimate rejectedEstimate)
         {
             db.Database.ExecuteSqlCommand("INSERT INTO RejectedEstimate (CustomerID, Comments, LTNumber, EstimatedPrice, AssayID, Element1, Element2, Element1Quantity, Element2Quantity) VALUES ('"
-               + 0 + "','"
+               + Authorized.CustomerID + "','"
                 + rejectedEstimate.Comments + "','"
                 + 0 + "','"
                 + 1000 + "','"
