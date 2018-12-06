@@ -18,10 +18,10 @@
             <th>
                 @Html.DisplayNameFor(model => model.LastName)
             </th>
-            <th>
+            <th class="thEndRight">
                 @Html.DisplayNameFor(model => model.TotalRevenue)
             </th>
-            <th class="thEndRight"></th>
+            
         </tr>
 
         @foreach (var item in Model)
@@ -39,13 +39,13 @@
             <td>
                 @Html.DisplayFor(modelItem => item.TotalRevenue)
             </td>
-            <td>
-                @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
-                @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
-                @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
-            </td>
         </tr>
 }
-
     </table>
+    <div class="row">
+        <div class="col-8"></div>
+        <div class="col-4">
+            <a class="btn btn-lg btn-outline-info btn-block" href="/Home/Login">Back to My Account</a>
+        </div>
+    </div>
 </div> 
