@@ -1,11 +1,12 @@
-﻿@model IEnumerable<ISIntex.ViewModels.SalesList>
+﻿@model IEnumerable<ISIntex.ViewModels.UnassignedCustomers>
 
 @{
-    ViewBag.Title = "MyClients";
+    ViewBag.Title = "UnassignedCustomers";
 }
 
-<div style="padding: 100px 50px 100px 50px;">
-    <h2>My Clients</h2>
+<div class="container body-content" style="padding-top: 50px;">
+
+    <h2>Unassigned Customers</h2>
 
     <table class="table rejectedEstimateTable">
         <tr>
@@ -45,6 +46,7 @@
             <th class="thEndRight">
                 @Html.DisplayNameFor(model => model.PaymentInfo)
             </th>
+
         </tr>
 
         @foreach (var item in Model)
@@ -87,7 +89,7 @@
                 @Html.DisplayFor(modelItem => item.PaymentInfo)
             </td>
         </tr>
-}
+      }
 
     </table>
-</div>
+</div> 
