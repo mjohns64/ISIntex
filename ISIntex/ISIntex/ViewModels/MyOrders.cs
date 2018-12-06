@@ -21,6 +21,8 @@ namespace ISIntex.ViewModels
         public DateTime DateDue { get; set; }    
         public byte[] TestResultFile { get; set; }
         public int LTNumber { get; set;  }
+        public string Status { get; set; }
+
 
 
 

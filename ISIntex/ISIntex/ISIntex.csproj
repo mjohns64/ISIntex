@@ -100,6 +100,7 @@
     <Content Include="Content\images\lab.jpg" />
     <Content Include="Content\images\notAuthorized.png" />
     <Content Include="Content\images\periodic-table.png" />
+    <Content Include="Content\images\pill.png" />
     <Content Include="Content\images\pillWoman.jpg" />
     <Content Include="Content\images\screenAssistant.jpg" />
     <Content Include="Content\images\seattle1.jpg" />
@@ -136,6 +137,7 @@
     <Content Include="Content\vendor\bootstrap\js\bootstrap.min.js.map" />
     <Content Include="Content\vendor\jquery\jquery.min.map" />
     <Content Include="Content\vendor\jquery\jquery.slim.min.map" />
+    <None Include="Properties\PublishProfiles\ISIntex20181206023929 - Web Deploy.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
