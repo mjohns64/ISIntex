@@ -6,7 +6,7 @@ using System.Web;
 
 namespace ISIntex.ViewModels
 {
-    public class SalesList
+    public class UnassignedCustomers
     {
         [DisplayName("Customer ID #")]
         public int CustomerID { get; set; }
@@ -30,6 +30,5 @@ namespace ISIntex.ViewModels
 
         [DisplayName("Payment Information")]
         public string PaymentInfo { get; set; }
-
     }
 }

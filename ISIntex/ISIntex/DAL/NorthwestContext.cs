@@ -29,6 +29,6 @@ namespace ISIntex.DAL
         public DbSet<WorkOrderTests> WorkOrderTestss { get; set; }
         public DbSet<Element> Elements { get; set; }
 
-
+        public System.Data.Entity.DbSet<ISIntex.ViewModels.MyOrders> MyOrders { get; set; }
     }
 }
