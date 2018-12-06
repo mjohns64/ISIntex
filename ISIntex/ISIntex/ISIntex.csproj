@@ -221,6 +221,9 @@
     <Content Include="Views\Manager\UnassignedCustomers.cshtml" />
     <Content Include="Views\Manager\TestAverages.cshtml" />
     <Content Include="Views\Customer\MyOrderView.cshtml" />
+    <Content Include="Views\Technician\WorkOrderforcopying.cshtml" />
+    <Content Include="Views\Technician\workOrder2.cshtml" />
+    <Content Include="Views\Technician\EditTestResult.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
