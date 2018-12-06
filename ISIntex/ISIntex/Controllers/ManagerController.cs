@@ -19,7 +19,8 @@ namespace ISIntex.Controllers
         private static NorthwestContext db = new NorthwestContext();
         public static List<Employee> EmployeeInfo = db.Employees.ToList();
         public static IEnumerable<SalesByRep> SalesByRepList = db.Database.SqlQuery<SalesByRep>("SELECT Employee.EmployeeID, Employee.FirstName, Employee.LastName, SUM(WorkOrder.ActualPrice) AS TotalRevenue FROM WorkOrder INNER JOIN Customer ON WorkOrder.CustomerID = Customer.CustomerID INNER JOIN Employee ON Customer.SalesRepID = Employee.EmployeeID WHERE WorkOrder.Status = 'Complete' AND UserTypeID = 2 GROUP BY Employee.EmployeeID, Employee.FirstName, Employee.LastName ORDER BY EmployeeID");
-
+        public static IEnumerable<UnassignedCustomers> UnassignedCustomersList = db.Database.SqlQuery<UnassignedCustomers>("SELECT * FROM Customer WHERE SalesRepID is NULL");
+        public static IEnumerable<TestAverages> TestAveragesList = db.Database.SqlQuery<TestAverages>("SELECT WorkOrder.AssayID, Assay.AssayType, SUM(WorkOrder.ActualPrice) AS TotalRevenue FROM Assay INNER JOIN WorkOrder ON Assay.AssayID = WorkOrder.AssayID GROUP BY WorkOrder.AssayID, Assay.AssayType ORDER BY WorkOrder.AssayID");
 
         // GET: Customer
         public ActionResult Index()
@@ -50,6 +51,30 @@ namespace ISIntex.Controllers
             if (Authorized.userAuth == "manager")
             { 
                 return View(SalesByRepList);
+            }
+            else
+            {
+                return RedirectToAction("NotAuthorized", "Home");
+            }
+        }
+
+        public ActionResult UnassignedCustomers()
+        {
+            if (Authorized.userAuth == "manager")
+            {
+                return View(UnassignedCustomersList);
+            }
+            else
+            {
+                return RedirectToAction("NotAuthorized", "Home");
+            }
+        }
+
+        public ActionResult TestAverages()
+        {
+            if (Authorized.userAuth == "manager")
+            {
+                return View(TestAveragesList);
             }
             else
             {
