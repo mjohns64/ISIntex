@@ -1,4 +1,4 @@
-﻿@model IEnumerable<ISIntex.Models.WorkOrder>
+﻿@model IEnumerable<ISIntex.ViewModels.MyOrders>
 
 @{
     ViewBag.Title = "MyOrderView";
@@ -12,25 +12,34 @@
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.CustomerID)
-        </th>
-        <th>
             @Html.DisplayNameFor(model => model.Comments)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.LTNumber)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.EstimatedPrice)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.ActualPrice)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Status)
+            @Html.DisplayNameFor(model => model.AssayID)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.AssayID)
+            @Html.DisplayNameFor(model => model.Weight)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.MolecularMass)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CompoundName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Quantity)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DateReceived)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DateDue)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TestResultFile)
         </th>
         <th></th>
     </tr>
@@ -38,31 +47,43 @@
 @foreach (var item in Model) {
     <tr>
         <td>
-            @Html.DisplayFor(modelItem => item.CustomerID)
-        </td>
-        <td>
             @Html.DisplayFor(modelItem => item.Comments)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.LTNumber)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.EstimatedPrice)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.ActualPrice)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.Status)
-        </td>
-        <td>
             @Html.DisplayFor(modelItem => item.AssayID)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.WorkOrderID }) |
-            @Html.ActionLink("Details", "Details", new { id=item.WorkOrderID }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.WorkOrderID })
+            @Html.DisplayFor(modelItem => item.Weight)
         </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.MolecularMass)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CompoundName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Quantity)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DateReceived)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DateDue)
+        </td>
+        <td>
+            @if (item.TestResultFile == null)
+            {
+                @: No Test Results
+                }
+            else
+            {
+                @Html.ActionLink("Download Result", "DownloadTestResult", new { LTNum = item.LTNumber })
+            }
+        </td>
+
     </tr>
 }
 
