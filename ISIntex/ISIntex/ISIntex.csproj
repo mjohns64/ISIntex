@@ -216,6 +216,9 @@
     <Content Include="Views\Technician\AddTestResultWText.cshtml" />
     <Content Include="Views\Technician\ResultAdded.cshtml" />
     <Content Include="Views\Technician\AddTestResult.cshtml" />
+    <Content Include="Views\Technician\WorkOrderforcopying.cshtml" />
+    <Content Include="Views\Technician\workOrder2.cshtml" />
+    <Content Include="Views\Technician\EditTestResult.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
