@@ -69,9 +69,7 @@ namespace ISIntex.Controllers
                     + customer.Zip + "');"
                     );
 
-                Authorized.userAuth = "customer";
-                Authorized.loginStatus = true;
-                return RedirectToAction("Index", "Customer");
+                return RedirectToAction("Login", "Home");
             }
             else
             {
