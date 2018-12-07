@@ -4,9 +4,56 @@
     ViewBag.Title = "Confirmation";
 }
 
+<div class="container" style="margin-top: 50px; padding: 20px; background-color: rgba(0, 148, 255, .1); border-radius: 15px;">
+    <div class="row" style="padding: 20px;">
+        <div class="col-12" align="left">
+            <h2>Order Confirmation</h2>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-4" align="left">
+            <p>Chemical compound:</p>
+        </div>
+        <div class="col-4" align="left">
+            <p>@Model.CompoundName</p>
+        </div>
+        <div class="col-4"></div>
+    </div>
+    <div class="row">
+        <div class="col-4" align="left">
+            <p>Estimated Price:</p>
+        </div>
+        <div class="col-4" align="left">
+            <p>$@Model.EstimatedPrice</p>
+        </div>
+        <div class="col-4"></div>
+    </div>
+    <div class="row">
+        <div class="col-4" align="left">
+            <p>testing completion Date:</p>
+        </div>
+        <div class="col-4" align="left">
+            <p>@Model.DateDue</p>
+        </div>
+        <div class="col-4"></div>
+    </div>
+    <div class="row">
+        <div class="col-4" align="left">
+            <p>Comments: </p>
+        </div>
+        <div class="col-4" align="left">
+            <p>@Model.Comments</p>
+        </div>
+        <div class="col-4"></div>
+    </div>
+    <div class="row">
+        <div class="col-4" align="left">
+            <a href="/Customer/MyOrderView" class="btn btn-outline-info btn-block">View My Orders</a>
+        </div>
+        <div class="col-4" align="left">
+            <a href="/Home/Login" class="btn btn-outline-info btn-block">Go To My Account</a>
+        </div>
+        <div class="col-4"></div>
+    </div>
+</div>
 
-<h2>Thank you for your Order!! You ordered chemical compound @Model.CompoundName</h2>
-<h2> Your quote for this chemical compound is: $@Model.EstimatedPrice. We will have the testing completed by @Model.DateDue</h2>
-<h2> Here are the special requests you listed in the comments: @Model.Comments </h2>
-
-<p style="text-align:center;"><img src="~/Content/images/pillWoman.jpg" class="center"></p>
