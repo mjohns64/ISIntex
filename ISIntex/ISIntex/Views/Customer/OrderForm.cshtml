@@ -79,7 +79,12 @@
                     @Html.LabelFor(model => model.OptionalTests, htmlAttributes: new { @class = "control-label col-md-6" })
                     <div class="col-md-12">
                         <div class="checkbox">
-                            @Html.EditorFor(model => model.OptionalTests)
+                            @Html.DropDownListFor(model => model.OptionalTests, new[] {
+                            new SelectListItem()
+                            { Text ="Yes", Value=true.ToString(), Selected = false},
+                            new SelectListItem()
+                            { Text = "No", Value=false.ToString(), Selected = false } },
+                            new { htmlAttributes = new { @class = "form-control" } })
                             @Html.ValidationMessageFor(model => model.OptionalTests, "", new { @class = "text-danger" })
                         </div>
                     </div>
@@ -105,7 +110,6 @@
                             {Text = "PharmaScreen® (PS)", Value="PharmaScreen® (PS)" },
                             new SelectListItem()
                             {Text = "CustomScreen™ (CS)", Value="CustomScreen™ (CS)" } },
-                            "Choose Assay",
                             new { htmlAttributes = new { @class = "form-control" } })
                         @Html.ValidationMessageFor(model => model.AssayID, "", new { @class = "text-danger" })
                     </div>
