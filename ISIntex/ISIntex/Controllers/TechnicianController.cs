@@ -255,28 +255,57 @@ namespace ISIntex.Controllers
             {
                 StringWriter sw = new StringWriter();
 
-                sw.WriteLine("\"LT Number\",\"Compound Sequence Code\",\"Weight\",\"Molecular Mass\",\"Compound Name\",\"Quantity\",\"Date Received\",\"Date Due\", \"Appearance\", \"Maximum Tolerable Dose\"");
+                sw.WriteLine("\"LT Number\",\"Compound Name\",\"Assay\",\"Weight\",\"Molecular Mass\",\"Quantity\",\"Date Received\",\"Date Due\",\"Appearance\",\"Maximum Tolerable Dose\",\"Status\"");
 
                 Response.ClearContent();
                 Response.AddHeader("content-disposition", "attachment;filename=Work Orders.csv");
                 Response.ContentType = "application/octet-stream";
+                DateTime today = DateTime.Today;
+                var workOrders = db.WorkOrders.Where(x => x.DateDue >= today).OrderByDescending(x => x.DateReceived).ToList();
 
-                var compounds = db.Compounds.OrderByDescending(c => c.DateReceived).Take(30).ToList();
-
-                foreach (var compound in compounds)
+                foreach (var workOrder in workOrders)
                 {
-                    sw.WriteLine(string.Format("\"{0}\",\"{1}\",\"{2}\",\"{3}\",\"{4}\",\"{5}\",\"{6}\",\"{6}\",\"{8}\",\"{9}\"",
+                    string assayName = "";
 
-                    compound.LTNumber,
-                    compound.CompoundSequenceCode,
-                    compound.Weight,
-                    compound.MolecularMass,
-                    compound.CompoundName,
-                    compound.Quantity,
-                    compound.DateReceived,
-                    compound.DateDue,
-                    compound.Appearance,
-                    compound.MTD
+                    if(workOrder.AssayID == 1)
+                    {
+                        assayName = "Biochemical Pharmacology";
+                    }
+                    else if (workOrder.AssayID == 2)
+                        {
+                        assayName = "DiscoveryScreen";
+                    }
+                    else if (workOrder.AssayID == 3)
+                    {
+                        assayName = "ImmunoScreen";
+                    }
+                    else if (workOrder.AssayID == 4)
+                    {
+                        assayName = "ProfilingScreen";
+                    }
+                    else if (workOrder.AssayID == 5)
+                    {
+                        assayName = "PharmaScreen";
+                    }
+                    else if (workOrder.AssayID == 6)
+                    {
+                        assayName = "CustomScreen";
+                    }
+
+
+                    sw.WriteLine(string.Format("\"{0}\",\"{1}\",\"{2}\",\"{3}\",\"{4}\",\"{5}\",\"{6}\",\"{6}\",\"{8}\",\"{9}\",\"{10}\"",
+
+                    workOrder.LTNumber,
+                    workOrder.CompoundName,
+                    assayName,
+                    workOrder.Weight,
+                    workOrder.MolecularMass,
+                    workOrder.Quantity,
+                    workOrder.DateReceived,
+                    workOrder.DateDue,
+                    workOrder.appearance,
+                    workOrder.MTD,
+                    workOrder.Status
                     ));
                 }
                 Response.Write(sw.ToString());
