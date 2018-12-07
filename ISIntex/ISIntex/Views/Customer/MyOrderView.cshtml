@@ -9,86 +9,109 @@
     <table class="table">
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.Comments)
+                Compound Name
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.ActualPrice)
+                Assay
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.AssayID)
+                Actual Price
+            </th>
+            <th>
+                Quantity (in ml)
+            </th>
+            <th>
+                Molecular Mass
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Weight)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.MolecularMass)
+                Date Received
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.CompoundName)
+                Date Due
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Quantity)
+                @Html.DisplayNameFor(model => model.Comments)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.DateReceived)
+                Order Status
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.DateDue)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Status)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.TestResultFile)
+                Test Results
             </th>
             <th></th>
         </tr>
 
         @foreach (var item in Model)
         {
-            <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Comments)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.ActualPrice)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.AssayID)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Weight)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.MolecularMass)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.CompoundName)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Quantity)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.DateReceived)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.DateDue)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Status)
-                </td>
-                <td>
-                    @if (item.TestResultFile == null)
-                    {
-                        @: No Test Results
-                    }
-                    else
-                    {
-                        @Html.ActionLink("Download Result", "DownloadTestResult", new { LTNum = item.LTNumber })
-                    }
-                </td>
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.CompoundName)
+            </td>
+            <td>
+                @if (item.AssayID == 1)
+                {
+                    @:Biochemical Pharmacology
+                }
+                else if (item.AssayID == 2)
+                {
+                    @:DiscoveryScreen
+                }
+                else if (item.AssayID == 3)
+                {
+                    @:ImmunoScreen
+                }
+                else if (item.AssayID == 4)
+                {
+                    @:ProfilingScreen
+                }
+                else if (item.AssayID == 5)
+                {
+                    @:PharmaScreen
+                }
+                else if (item.AssayID == 6)
+                {
+                    @:CustomScreen
+                }
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ActualPrice)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Quantity)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.MolecularMass)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Weight)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DateReceived)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DateDue)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Comments)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Status)
+            </td>
+            <td>
+                @if (item.TestResultFile == null)
+                {
+                    @: No Test Results
+                }
+                else
+                {
+                    @Html.ActionLink("Download Result", "DownloadTestResult", new { LTNum = item.LTNumber })
+                }
+            </td>
 
-            </tr>
+        </tr>
         }
     </table>
     <div class="row">
