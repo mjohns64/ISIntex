@@ -42,10 +42,11 @@ namespace ISIntex.Controllers
         {
             if (Authorized.userAuth == "technician")
             {
-                var stuffyStuff = db.WorkOrders.OrderByDescending(c => c.DateReceived).Take(30).ToList();
+                DateTime today = DateTime.Today;
+                var workOrders = db.WorkOrders.Where(x => x.DateDue >= today).OrderByDescending(x => x.DateReceived).ToList();
 
-                TempData["WOList"] = stuffyStuff;
-                return View("WorkOrders", stuffyStuff);
+                TempData["WOList"] = workOrders;
+                return View("WorkOrders", workOrders);
             }
             else
             {
